@@ -1,2 +1,2 @@
-# projektityo2
-Ohjelmisto 2 -kurssin projektityö
+# game-starter-HTML
+Green 'Code' button up there -> Download ZIP
