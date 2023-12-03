@@ -12,7 +12,7 @@ section {
     display: grid;
     flex-direction: column;
     align-items: normal;
-    column-gap: 5px;
+    column-gap: 10px;
     grid-template-columns: 0fr 1fr;
 }
 
@@ -22,6 +22,7 @@ section {
     height: 640px;
     width: 740px;
     grid-row-start: auto;
+    border-style: solid;
 }
 
 /* Navbar css-asetukset */
@@ -58,23 +59,41 @@ section {
 
 /* Tietolaatikon css-asetukset */
 #tiedot {
-
+    border-style: solid;
     height: 300px;
-    background: rgba(0,0,0, 0.1);
+    background: rgba(0,255,255, 0.3);
     color: black;
+    padding-left: 5px;
 
+}
+
+#tiedoth3 {
+    text-decoration: underline;
 }
 
 /* Konsolilaatikon css-asetukset */
 #konsoli {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 255, 255, 0.3);
     height: 300px;
-    padding-left: 2em;
+    border-style: solid;
     color: black;
     top: 50px;
     position: relative;
+    padding-left: 5px;
+
 
 }
+
+#konsolip {
+    
+
+}
+
+#konsolih3 {
+       text-decoration: underline;  
+}
+
+
 
 
 /* Tietolaatikon sisäiset tietolaatikot */
