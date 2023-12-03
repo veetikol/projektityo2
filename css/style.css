@@ -1,6 +1,6 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: pink;
+    background-color: aliceblue;
 }
 
 .otsikko {
@@ -12,14 +12,16 @@ section {
     display: grid;
     flex-direction: column;
     align-items: normal;
-    column-gap: 15px;
-    grid-template-columns: 5fr 5fr 5fr;
+    column-gap: 5px;
+    grid-template-columns: 0fr 1fr;
 }
 
 /* Kartan css -asetukset */
 #map {
+
     height: 640px;
-    width: 640px;
+    width: 740px;
+    grid-row-start: auto;
 }
 
 /* Navbar css-asetukset */
@@ -56,20 +58,52 @@ section {
 
 /* Tietolaatikon css-asetukset */
 #tiedot {
-    padding-left: 2em;
-    width: 400px;
-    height: 400px;
-    background-color: black;
-    color: white;
-   
-   
+
+    height: 300px;
+    background: rgba(0,0,0, 0.1);
+    color: black;
+
 }
 
 /* Konsolilaatikon css-asetukset */
 #konsoli {
-    background-color: black;
-    width: 340px;
-    height: 400px;
+    background: rgba(0, 0, 0, 0.1);
+    height: 300px;
     padding-left: 2em;
-    color: white;
+    color: black;
+    top: 50px;
+    position: relative;
+
+}
+
+
+/* Tietolaatikon sisäiset tietolaatikot */
+.boxes {
+    display: grid;
+    flex-direction: column;
+    align-items: normal;
+    column-gap: 5px;
+    row-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+#nimi {
+    background-color: rgba(0,0,0, 0.1);
+    height: 60px;
+
+}
+
+#rahat {
+    background-color: rgba(0,0,0, 0.1);
+    height: 60px;
+}
+
+#sijainti {
+    background-color: rgba(0,0,0, 0.1);
+    height: 60px;
+}
+
+#maat {
+     background-color: rgba(0,0,0, 0.1);
+    height: 60px;
 }
