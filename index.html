@@ -1,42 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
     <link href="css/style.css" rel="stylesheet">
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js" defer></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js" defer></script>
     <script src="js/main.js" defer></script>
     <title>Countrivia</title>
 </head>
 
 <body>
-    <header class="page-header">
-        <h1 class="page-title">Countrivia</h1>
-
         <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Game</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
+            <div class="topnav">
+                <a class="active" href="index.html">Game</a>
+                <a href="index.html">About</a>
+            </div>
         </nav>
+
+        <header>
+            <h1 class="otsikko">CounTrivia</h1>
     </header>
-    
-    <main>
+
+<section class="container">
         <div id="map"></div>
-        <div class="boxes">
-            <section class="box">
-                <header></header>
-            </section>
-        </div>
+    <div id="tiedot">
+        <h3>Pelaajan tiedot</h3>
+        <p>Nimi:</p>
+        <p>Rahat:</p>
+        <p>Sijainti:</p>
+        <p>Maat:</p>
+    </div>
+    <div id="konsoli">
+        <h3>Konsoli</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi asperiores, dicta expedita fugiat hic iure molestias nostrum optio porro quasi qui repudiandae sapiente vel veniam vero voluptates? Excepturi, nesciunt.</p>
+    </div>
+
+
+    </div>
+</section>
 </body>
+
+
 
 </html>
