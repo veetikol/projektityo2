@@ -3,6 +3,7 @@ body {
     background-color: aliceblue;
 }
 
+/* Pääotsikko */
 .otsikko {
     text-align: center;
 }
@@ -18,7 +19,6 @@ section {
 
 /* Kartan css -asetukset */
 #map {
-
     height: 640px;
     width: 740px;
     grid-row-start: auto;
@@ -80,21 +80,17 @@ section {
     top: 50px;
     position: relative;
     padding-left: 5px;
-
-
 }
 
+/* <p> teksti */
 #konsolip {
-    
 
 }
 
+/* Otsikko */
 #konsolih3 {
-       text-decoration: underline;  
+    text-decoration: underline;
 }
-
-
-
 
 /* Tietolaatikon sisäiset tietolaatikot */
 .boxes {

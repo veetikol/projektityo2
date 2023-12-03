@@ -45,6 +45,7 @@ function onMapClick(e) {
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(map);
 }
+
 // Tapahtumakäsittelijä onMapClick -metodille
 map.on('click', onMapClick);
 
