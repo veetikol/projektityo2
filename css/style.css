@@ -132,3 +132,18 @@ section {
      background-color: rgba(0,0,0, 0.1);
     height: 60px;
 }
+
+/* Pelaajaformin css-asetukset */
+#pelaajaformi {
+    height: 4rem;
+
+}
+
+#pelaajainput {
+    height: 2rem;
+    border-style: solid;
+}
+
+#startnappula {
+    height: 2rem;
+}
