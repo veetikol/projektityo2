@@ -60,7 +60,7 @@ async function inputName(playerName) {
 
 startnappi.addEventListener("click", ()=>{
     inputName(pelaajaInput.value);
-}
+})
 
 // global variables
 let playerName = null;
