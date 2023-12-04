@@ -52,20 +52,9 @@ map.on('click', onMapClick);
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
 
-async function inputName(playerName) {
-    document.querySelector('#konsoli1').style.display = "none";
-    document.querySelector("#konsoli2").style.display = "block";
-    let playerName = playerName;
-}
-
-startnappi.addEventListener("click", ()=>{
-    inputName(pelaajaInput.value);
-})
 
 // global variables
-let playerName = null;
-const startnappi = document.querySelector("#startnappula");
-const pelaajaInput = document.querySelector('#pelaajainput');
+
 // icons
 
 // form for player name
