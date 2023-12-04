@@ -49,6 +49,11 @@ function onMapClick(e) {
 // Tapahtumakäsittelijä onMapClick -metodille
 map.on('click', onMapClick);
 
+// Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
+// ja luo tilalle pelaajavalinnat
+
+
+
 
 // global variables
 
@@ -57,6 +62,8 @@ map.on('click', onMapClick);
 // form for player name
 
 // function to fetch data from API
+async function fetchData() {
+}
 
 // function to update game status
 
