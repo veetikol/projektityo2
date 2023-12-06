@@ -21,6 +21,8 @@ const polygon = L.polygon([
     [51.503, -0.06],
     [51.51, -0.047]
 ]).addTo(map);
+const konsoli = document.querySelector('.konsoli1')
+
 
 // Pop-up toiminnot markkereille, openPopup()-metodi avaa ikkunan välittömästi
 marker.bindPopup("I am a marker.").openPopup();
@@ -36,6 +38,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
 
 
 // Metodi, joka palauttaa paikan koordinaatin käyttäjän painaessa karttaa

@@ -1,11 +1,20 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: aliceblue;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://www.pixground.com/wp-content/uploads/2023/07/Abstract-Gradient-Blue-Layers-AI-Generated-4K-Wallpaper-jpg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
 }
+
 
 /* Pääotsikko */
 .otsikko {
     text-align: center;
+    color: antiquewhite;
 }
 
 /* Datalaatikoiden asettelu */
@@ -19,32 +28,31 @@ section {
 
 /* Kartan css -asetukset */
 #map {
-    height: 640px;
+    height: 610px;
     width: 740px;
     grid-row-start: auto;
-    border-style: solid;
+    border-radius: 25px;
+    border: 2px solid;
+    border-top: 1px solid ;
+    border-bottom: 1px solid ;
 }
 
 /* Navbar css-asetukset */
 .topnav {
-    background-color: #333333;
-    overflow: auto;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 25px;
+    border: 2px solid;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 10px;
+    height: 40px;
     display: flex;
-    flex-wrap: wrap;
-    align-items: normal;
-    justify-content: left;
+    align-items: center;
 }
 
 .topnav a {
-    float: right;
-    color: white;
-    text-align: center;
-    padding: 12px 50px;
-    text-decoration: none;
-    font-size: 17px;
-    font-family: sans-serif;
-    position: relative;
-    cursor: pointer;
+
+
 }
 
 .topnav a:hover {
@@ -53,55 +61,58 @@ section {
 }
 
 .topnav a.active {
-    background-color: black;
+    background-color: rebeccapurple;
     color: white;
 }
-
+.navButton {
+    float: left;
+  color: floralwhite;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+    border-radius: 17px;
+    margin-left: 50px;
+}
 /* Tietolaatikon css-asetukset */
 #tiedot {
-    border-style: solid;
+
     height: 300px;
-    background: rgba(0,255,255, 0.3);
-    color: black;
+    background: rgba(0,0,0, 0.3);
+    color: antiquewhite;
     padding-left: 5px;
+    border-radius: 25px;
+    border: 2px solid black;
 
 }
 
-#tiedoth3 {
-    text-decoration: underline;
-}
 
 /* Konsolilaatikon css-asetukset */
 .konsoli1 {
-    background: rgba(0, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
     height: 300px;
-    border-style: solid;
-    color: black;
+    color: antiquewhite;
     top: 50px;
     position: relative;
     padding-left: 5px;
+    border-radius: 25px;
+    border: 2px solid black;
+
 }
 
 .konsoli2 {
-    background: rgba(0, 255, 255, 0.3);
+   background: rgba(0, 0, 0, 0.3);
     height: 300px;
-    border-style: solid;
-    color: black;
+    color: antiquewhite;
     top: 50px;
     position: relative;
     padding-left: 5px;
+    border-radius: 25px;
+    border: 2px solid black;
     display: none;
-}
-
-/* <p> teksti */
-#konsolip {
 
 }
 
-/* Otsikko */
-#konsolih3 {
-    text-decoration: underline;
-}
 
 /* Tietolaatikon sisäiset tietolaatikot */
 .boxes {
@@ -114,37 +125,88 @@ section {
 }
 
 #nimi {
-    background-color: rgba(0,0,0, 0.1);
+    background-color: rgba(0,0,0, 0.4);
     height: 60px;
+    color: antiquewhite;
 
 }
 
 #rahat {
-    background-color: rgba(0,0,0, 0.1);
+    background-color: rgba(0,0,0, 0.4);
     height: 60px;
+    color: antiquewhite;
 }
 
 #sijainti {
-    background-color: rgba(0,0,0, 0.1);
+    background-color: rgba(0,0,0, 0.4);
     height: 60px;
+    color: antiquewhite;
 }
 
 #maat {
-     background-color: rgba(0,0,0, 0.1);
+     background-color: rgba(0,0,0, 0.4);
     height: 60px;
+    color: antiquewhite;
 }
 
-/* Pelaajaformin css-asetukset */
-#pelaajaformi {
-    height: 4rem;
 
-}
-
-#pelaajainput {
-    height: 2rem;
-    border-style: solid;
+#kuva {
+    height: 40px;
+    text-align: center;
 }
 
 #startnappula {
-    height: 2rem;
+    background-color: rgb(207,159,205);
+  border-radius: 100px;
+  box-shadow: rgba(207, 159, 205, .2) 0 -25px 18px -14px inset,rgba(207, 159, 205, .15) 0 1px 2px,rgba(207, 159, 205, .15) 0 2px 4px,rgba(207, 159, 205, .15) 0 4px 8px,rgba(207, 159, 205, .15) 0 8px 16px,rgba(207, 159, 205, .15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+#startnappula:hover {
+  box-shadow: rgba(207,159,205,.35) 0 -25px 18px -14px inset,rgba(207,159,205,.25) 0 1px 2px,rgba(207,159,205,.25) 0 2px 4px,rgba(207,159,205,.25) 0 4px 8px,rgba(207,159,205,.25) 0 8px 16px,rgba(207,159,205,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+.button-33 {
+  background-color: rgb(207,159,205);
+  border-radius: 100px;
+  box-shadow: rgba(207, 159, 205, .2) 0 -25px 18px -14px inset,rgba(207, 159, 205, .15) 0 1px 2px,rgba(207, 159, 205, .15) 0 2px 4px,rgba(207, 159, 205, .15) 0 4px 8px,rgba(207, 159, 205, .15) 0 8px 16px,rgba(207, 159, 205, .15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(207,159,205,.35) 0 -25px 18px -14px inset,rgba(207,159,205,.25) 0 1px 2px,rgba(207,159,205,.25) 0 2px 4px,rgba(207,159,205,.25) 0 4px 8px,rgba(207,159,205,.25) 0 8px 16px,rgba(207,159,205,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+#pelaajainput {
+     background-color: antiquewhite;
+     color: white;
+    height: 30px;
+   border-radius: 15px;
 }
