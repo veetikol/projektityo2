@@ -48,6 +48,8 @@ section {
     height: 40px;
     display: flex;
     align-items: center;
+    text-align: center;
+    margin: auto;
 }
 
 .topnav a {
@@ -67,12 +69,12 @@ section {
 .navButton {
     float: left;
   color: floralwhite;
-  text-align: center;
+
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
     border-radius: 17px;
-    margin-left: 50px;
+
 }
 /* Tietolaatikon css-asetukset */
 #tiedot {
@@ -209,4 +211,24 @@ section {
      color: white;
     height: 30px;
    border-radius: 15px;
+}
+
+.logo-image{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -2px;
+    margin-right: 20px;
+
+}
+
+.logo-image2{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -2px;
+    margin-left: 1175px;
+
 }
