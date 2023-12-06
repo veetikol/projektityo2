@@ -39,7 +39,7 @@ section {
 
 /* Navbar css-asetukset */
 .topnav {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.8);
     border-radius: 25px;
     border: 2px solid;
     border-top: 1px solid #000;
@@ -231,4 +231,13 @@ section {
     margin-top: -2px;
     margin-left: 1175px;
 
+}
+footer {
+      position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
