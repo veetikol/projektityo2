@@ -133,27 +133,23 @@ section {
 }
 
 #nimi {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 
 }
 
 #rahat {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 }
 
 #sijainti {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 }
 
 #maat {
-     background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 }
 
@@ -258,4 +254,9 @@ footer {
   margin-right: auto;
  padding: 10px;
     border-radius: 15px;
+}
+.databox {
+     background-color: rgba(0,0,0, 0.4);
+    color: antiquewhite;
+
 }
