@@ -72,9 +72,22 @@ async function playerName(name) {
     nimiInput.innerHTML = pelaajanimi;
 }
 
+// exit-nappulan funktiot
 
+const exitnappi = document.getElementById('exitButton');
 
+exitnappi.addEventListener('click', () => {
+    event.preventDefault();
+    resetGame();
+})
 
+async function resetGame() {
+    document.querySelector('.konsoli1').style.display = "block";
+    document.querySelector('.konsoli2').style.display = "none";
+    pelaajanimi = "";
+    nimiInput.innerHTML = "";
+    pelaajaformi.value = "";
+}
 
 // global variables
 
