@@ -256,7 +256,9 @@ footer {
     border-radius: 15px;
 }
 .databox {
-     background-color: rgba(0,0,0, 0.4);
+    background-color: rgba(0,0,0, 0.4);
     color: antiquewhite;
+    height: 40px;
+    border-radius: 15px;
 
 }
