@@ -67,9 +67,10 @@ map.on('click', onMapClick);
     async function playerName(name) {
         document.querySelector('.konsoli1').style.display = "none";
         document.querySelector('.konsoli2').style.display = "block";
-        nimilaatikko.innerHTML = name;
-        
+        pelaajanimi = name;
     }
+
+    
 
 
 
