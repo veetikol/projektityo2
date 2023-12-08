@@ -196,6 +196,9 @@ position: relative;
   transform: scale(1.05) rotate(-1deg);
 }
 
+.buttons {
+    text-align: center;
+}
 
 .button-33 {
   background-color: rgb(207,159,205);
@@ -294,4 +297,36 @@ footer {
     margin-top: 1px;
     margin-right: 120px;
     display: none;
+}
+
+#guessForm {
+    margin: 20px;
+    text-align: center;
+    display: none;
+}
+
+#guessInput {
+    background-color: antiquewhite;
+    color: black;
+    height: 30px;
+    border-radius: 15px;
+}
+
+#guessEnter {
+    background-color: rgb(207,159,205);
+    border-radius: 100px;
+    box-shadow: rgba(207, 159, 205, .2) 0 -25px 18px -14px inset,rgba(207, 159, 205, .15) 0 1px 2px,rgba(207, 159, 205, .15) 0 2px 4px,rgba(207, 159, 205, .15) 0 4px 8px,rgba(207, 159, 205, .15) 0 8px 16px,rgba(207, 159, 205, .15) 0 16px 32px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
