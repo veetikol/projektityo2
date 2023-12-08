@@ -281,6 +281,7 @@ footer {
 .headerbox {
     margin-left: 5px;
     overflow: auto;
+    margin-bottom: 0;
 }
 
 #story {
