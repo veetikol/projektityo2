@@ -2,6 +2,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: antiquewhite;
 
 
 }
@@ -88,20 +89,22 @@ main {
     align-items: center;
     width: 100%;
     padding-top: 7%;
-    color: snow;
+    color: antiquewhite;
 }
 
 main h1 {
     font-size: 120px;
     margin-bottom: 20px;
+    color: antiquewhite;
 }
 
 main p {
     font-size: larger;
+    color: antiquewhite;
 }
 
 main a {
-    color: snow;
+    color: antiquewhite;
     background-color: black;
     text-decoration: none;
     display: inline-block;
