@@ -61,18 +61,21 @@ startnappula.addEventListener("click", () => {
         playerName(pelaajaformi.value);
         emptyname.style.display = "none";
     }
-    fetch(`https://localhost:3000/start/${pelaajaform.value}`, {
-        method: 'GET'
-        }
-        )
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.message);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        })
-});
+    fetch(`https://localhost:3000/start`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ variable: playerName }),
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
     
 async function playerName(name) {
     document.querySelector('.konsoli1').style.display = "none";
