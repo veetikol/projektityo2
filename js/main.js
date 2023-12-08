@@ -61,7 +61,10 @@ startnappula.addEventListener("click", () => {
         playerName(pelaajaformi.value);
         emptyname.style.display = "none";
     }
-    fetch('https://localhost:3000/start')
+    fetch(`https://localhost:3000/start/${pelaajaform.value}`, {
+        method: 'GET'
+        }
+        )
         .then(response => response.json())
         .then(data => {
             console.log(data.message);
