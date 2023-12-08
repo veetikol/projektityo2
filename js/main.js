@@ -1,4 +1,5 @@
 'use strict';
+
 /* 1. show map using Leaflet library. (L comes from the Leaflet library) */
 
 // Haetaan kartta ja keskitetään se aluksi Lontooseen
@@ -39,6 +40,8 @@ map.on('click', onMapClick);
 // ja luo tilalle pelaajavalinnat
 let pelaajanimi = "";
 let playerGuess = "";
+let startURL = window.location.href;
+let URL_with_command = "";
 const pelaajaformi = document.getElementById('pelaajainput');
 const startnappula = document.querySelector('#startnappula');
 const nimilaatikko = document.getElementById('nimi');
@@ -58,13 +61,23 @@ startnappula.addEventListener("click", () => {
         playerName(pelaajaformi.value);
         emptyname.style.display = "none";
     }
-})
+    fetch('https://localhost:3000/start')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        })
+});
     
 async function playerName(name) {
     document.querySelector('.konsoli1').style.display = "none";
     document.querySelector('.konsoli2').style.display = "block";
     pelaajanimi = name;
     nimiInput.innerHTML = pelaajanimi;
+    URL_with_command = startURL + "/start";
+    window.location.href = URL_with_command;
 }
 
 // exit-nappulan funktiot
