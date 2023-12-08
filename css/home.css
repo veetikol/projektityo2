@@ -65,7 +65,7 @@ nav {
 }
 
 .navbar ul li a:hover {
-    color: deeppink;
+    color: mediumpurple;
 }
 
 .logo {
@@ -113,7 +113,7 @@ main a {
 }
 
 main a:hover {
-    background-color: deeppink;
+    background-color: mediumpurple;
 }
 
 .box {
