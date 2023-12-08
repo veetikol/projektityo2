@@ -44,7 +44,9 @@ const startnappula = document.querySelector('#startnappula');
 const nimilaatikko = document.getElementById('nimi');
 const nimiInput = nimilaatikko.querySelector('p');
 const emptyname = document.getElementById('emptyname');
+const guessButton = document.getElementById('guessButton');
 const guessForm = document.getElementById('guessForm');
+const guessInput = document.getElementById('guessInput');
 const guessSubmit = document.getElementById('guessEnter');
 
 startnappula.addEventListener("click", () => {
@@ -84,16 +86,21 @@ async function resetGame() {
 
 // Tapahtumankäsittelijä Guess-nappulalle
 
-async function guessInput(guess) {
-    guessInput.style.display = "block";
+async function guessCountry(guess) {
+    guessForm.style.display = "block";
     playerGuess = guess;
+    console.log(playerGuess);
 }
+
+guessButton.addEventListener('click', () => {
+    event.preventDefault();
+    guessForm.style.display = "block";
+})
 
 guessSubmit.addEventListener('click', () => {
     event.preventDefault();
-    guessInput(guessForm.value);
+    guessCountry(guessInput.value);
 })
-
 
 
 // icons
