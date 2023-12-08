@@ -1,3 +1,7 @@
+.container video {
+    filter: hue-rotate(90deg) brightness(45%);
+}
+
 .container{
     height: 100vh;
     scroll-snap-type: y mandatory;
@@ -55,7 +59,6 @@ nav {
 }
 
 .background {
-    filter: brightness(45%);
     position: absolute;
     right: 0;
     bottom: 0;
