@@ -10,27 +10,25 @@
      crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin="" defer></script>
+     crossorigin=""></script>
     <link href="css/style.css" rel="stylesheet">
     <script src="js/main.js" defer></script>
     <title>Countrivia</title>
 </head>
 
 <body>
-         <div class="navbar">
-                <a href="home.html">
-                    <img src="img/CountTriviaLogo.png"  alt="logo" class="logo">
-                </a>
-                <nav>
-                    <ul>
-                        <li><a href="home.html"> HOME</a></li>
-                        <li><a href="index.html"> GAME</a></li>
-                        <li><a href="#2"> ABOUT US</a></li>
-                    </ul>
-                </nav>
+        <nav>
+            <div class="topnav">
+                <div class="logo-image">
+            <img src="img/CountTriviaLogo.png" class="img-fluid">
+      </div>
+                <a class="navButton" href="index.html">Game</a>
+                <a class="navButton" href="index.html">About</a>
+
+      </div>
             </div>
 
-
+        </nav>
 
         <header>
             <img src="img/CounTrivia3.png" alt="CountTriviaHeader" class="center"></img>
@@ -76,11 +74,20 @@
             <h3 style="text-align: center">Game</h3>
             <p id="story">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus deserunt quis quo unde. At deserunt enim est et iste minus nam quibusdam quidem rem, sequi? Earum enim nostrum officia quae!</p>
         </div>
-        <button class="button-33" role="button">Tip</button>
-        <button class="button-33" role="button">Guess</button>
-        <button class="button-33" role="button">Countries</button>
-        <button class="button-33" role="button">Save</button>
-        <button id="exitButton" class="button-33" role="button">Exit</button>
+        <div class="buttons">
+            <button class="button-33" role="button">Tip</button>
+            <button class="button-33" role="button">Guess</button>
+            <button class="button-33" role="button">Countries</button>
+            <button class="button-33" role="button">Save</button>
+            <button id="exitButton" class="button-33" role="button">Exit</button>
+        </div>
+        <div>
+            <form id="guessForm">
+                <input id="guessInput" type="text" placeholder="Input a country" required>
+                <input id="guessEnter" type="submit" value="Guess">
+
+            </form>
+        </div>
     </div>
 
     </div>

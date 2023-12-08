@@ -38,19 +38,23 @@ map.on('click', onMapClick);
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
 let pelaajanimi = "";
+let playerGuess = "";
 const pelaajaformi = document.getElementById('pelaajainput');
 const startnappula = document.querySelector('#startnappula');
 const nimilaatikko = document.getElementById('nimi');
 const nimiInput = nimilaatikko.querySelector('p');
+const emptyname = document.getElementById('emptyname');
+const guessForm = document.getElementById('guessForm');
+const guessSubmit = document.getElementById('guessEnter');
 
 startnappula.addEventListener("click", () => {
     event.preventDefault();
     // syötetään "virhekoodi", jos pelaaja syöttää tyhjän nimen
     if (pelaajaformi.value == "") {
-        document.getElementById('emptyname').style.display = "block";
+        emptyname.style.display = "block";
     } else {
         playerName(pelaajaformi.value);
-        document.getElementById('emptyname').style.display = "none";
+        emptyname.style.display = "none";
     }
 })
     
@@ -78,7 +82,19 @@ async function resetGame() {
     pelaajaformi.value = "";
 }
 
-// global variables
+// Tapahtumankäsittelijä Guess-nappulalle
+
+async function guessInput(guess) {
+    guessInput.style.display = "block";
+    playerGuess = guess;
+}
+
+guessSubmit.addEventListener('click', () => {
+    event.preventDefault();
+    guessInput(guessForm.value);
+})
+
+
 
 // icons
 
