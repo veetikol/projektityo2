@@ -8,6 +8,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-attachment: fixed;
+    padding-bottom: 50px;
+
 }
 
 
@@ -24,6 +26,7 @@ section {
     align-items: normal;
     column-gap: 10px;
     grid-template-columns: 0fr 1fr;
+
 }
 
 /* Kartan css -asetukset */
@@ -35,6 +38,9 @@ section {
     border: 2px solid;
     border-top: 1px solid ;
     border-bottom: 1px solid ;
+    min-width: 550px;
+position: relative;
+    z-index: 0
 
 }
 
@@ -53,10 +59,6 @@ section {
     margin: auto;
 }
 
-.topnav a {
-
-
-}
 
 .topnav a:hover {
     background-color: black;
@@ -86,6 +88,8 @@ section {
     padding-left: 5px;
     border-radius: 25px;
     border: 2px solid black;
+    min-width: 550px;
+position: relative;
 
 }
 
@@ -99,11 +103,13 @@ section {
     background: rgba(0, 0, 0, 0.3);
     height: 300px;
     color: antiquewhite;
-    top: 50px;
+    top: 35px;
     position: relative;
     padding-left: 5px;
     border-radius: 25px;
     border: 2px solid black;
+    min-width: 550px;
+
 
 }
 
@@ -111,12 +117,13 @@ section {
    background: rgba(0, 0, 0, 0.3);
     height: 300px;
     color: antiquewhite;
-    top: 50px;
+    top: 35px;
     position: relative;
     padding-left: 5px;
     border-radius: 25px;
     border: 2px solid black;
     display: none;
+
 
 }
 
@@ -127,34 +134,36 @@ section {
     flex-direction: column;
     align-items: normal;
     column-gap: 5px;
-    row-gap: 20px;
-    grid-template-columns: 1fr 1fr;
+    row-gap: 1px;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 #nimi {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 
 }
 
 #rahat {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 }
 
 #sijainti {
-    background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
 }
 
 #maat {
-     background-color: rgba(0,0,0, 0.4);
-    height: 60px;
+
     color: antiquewhite;
+    text-align: center;
+    grid-column: 1/4;
+    grid-row: 2/2;
+
 }
+
+
 
 
 #kuva {
@@ -204,6 +213,7 @@ section {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+    margin-left: 10px;
 }
 
 .button-33:hover {
@@ -218,7 +228,7 @@ section {
 
 #pelaajainput {
      background-color: antiquewhite;
-     color: white;
+     color: black;
     height: 30px;
    border-radius: 15px;
 }
@@ -232,23 +242,15 @@ section {
 
 }
 
-.logo-image2{
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -2px;
-    margin-left: 1175px;
-
-}
 footer {
-      position: fixed;
+    position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: black;
   color: white;
   text-align: center;
+
 }
 
 .center {
@@ -257,4 +259,32 @@ footer {
   margin-right: auto;
  padding: 10px;
     border-radius: 15px;
+}
+.databox {
+    background-color: rgba(0,0,0, 0.4);
+    color: antiquewhite;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden;
+    height: 10px;
+    font-family: sans-serif;
+    margin-right: 5px;
+    white-space: initial;
+}
+
+.headerbox {
+    margin-left: 5px;
+    overflow: auto;
+}
+
+#story {
+      background-color: rgba(0,0,0, 0.4);
+    color: antiquewhite;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden;
+    height: 50px;
+    font-family: sans-serif;
+    margin-right: 5px;
+    white-space: initial;
 }

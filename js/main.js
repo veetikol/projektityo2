@@ -54,25 +54,40 @@ map.on('click', onMapClick);
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
-    let pelaajanimi = "";
-    const pelaajaformi = document.querySelector('#pelaajaformi');
-    const startnappula = document.querySelector('#startnappula');
-    const nimilaatikko = document.querySelector('.name');
+let pelaajanimi = "";
+const pelaajaformi = document.getElementById('pelaajainput');
+const startnappula = document.querySelector('#startnappula');
+const nimilaatikko = document.getElementById('nimi');
+const nimiInput = nimilaatikko.querySelector('p');
 
-    startnappula.addEventListener("click", () => {
-        event.preventDefault();
-        playerName(pelaajaformi.value);
-    })
+startnappula.addEventListener("click", () => {
+    event.preventDefault();
+    playerName(pelaajaformi.value);
+})
     
-    async function playerName(name) {
-        document.querySelector('.konsoli1').style.display = "none";
-        document.querySelector('.konsoli2').style.display = "block";
-        pelaajanimi = name;
-    }
+async function playerName(name) {
+    document.querySelector('.konsoli1').style.display = "none";
+    document.querySelector('.konsoli2').style.display = "block";
+    pelaajanimi = name;
+    nimiInput.innerHTML = pelaajanimi;
+}
 
-    
+// exit-nappulan funktiot
 
+const exitnappi = document.getElementById('exitButton');
 
+exitnappi.addEventListener('click', () => {
+    event.preventDefault();
+    resetGame();
+})
+
+async function resetGame() {
+    document.querySelector('.konsoli1').style.display = "block";
+    document.querySelector('.konsoli2').style.display = "none";
+    pelaajanimi = "";
+    nimiInput.innerHTML = "";
+    pelaajaformi.value = "";
+}
 
 // global variables
 
