@@ -1,6 +1,7 @@
 from geopy.distance import geodesic
 from yhteys import yhteys
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
+from flask_cors import CORS
 import json
 import random
 
@@ -220,26 +221,23 @@ for y in sqlhaku:
 
 
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/start/<nimi>')
-def start(nimi, pelaaja, peli):
+@app.route('/start', methods=['POST'])
+def start(pelaaja, peli):
     sqlhaku = maat()
     random.shuffle(sqlhaku)
     for x in sqlhaku:
         peli.maat.append(x[0])
     for y in sqlhaku:
         peli.lentokentat.append(y[1])
-    pelaaja.nimi = nimi
+    data = request.get_json()
+    muuttuja = data.get('variable', 'default_value')
+    pelaaja.nimi = muuttuja
     pelaaja.tavoitemaa = peli.maat[peli.listaindeksi]
     vihje = haevihje(pelaaja, peli)
-    vastaus = {
-        "nimi": pelaaja.nimi,
-        "rahat": pelaaja.rahat,
-        "sijainti": pelaaja.sijaintimaa,
-        "kohdemaa": pelaaja.tavoitemaa,  # Tämä saattaa olla turha
-        "vihje": vihje
-    }
+    return jsonify({'nimi': pelaaja.nimi})
     return vastaus  # Palautetaan vastaus json-muodossa.
 
 

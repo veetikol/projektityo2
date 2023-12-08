@@ -61,29 +61,20 @@ startnappula.addEventListener("click", () => {
         playerName(pelaajaformi.value);
         emptyname.style.display = "none";
     }
-    fetch(`https://localhost:3000/start`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ variable: playerName }),
-
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message)
-    })
-    .catch(error => {
-        console.error('Error:', error);
+    fetch(`http://127.0.0.1:3000/start/${pelaajanimi}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     });
-    
 async function playerName(name) {
     document.querySelector('.konsoli1').style.display = "none";
     document.querySelector('.konsoli2').style.display = "block";
     pelaajanimi = name;
     nimiInput.innerHTML = pelaajanimi;
-    URL_with_command = startURL + "/start";
-    window.location.href = URL_with_command;
 }
 
 // exit-nappulan funktiot
