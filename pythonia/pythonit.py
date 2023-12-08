@@ -335,7 +335,7 @@ def tallenna(pelaaja, peli):
     # Eli tähän tulee sql-update-lause, joka tallentaa nykyisen pelitilanteen sql-tietokantaan.
 """
 
-# Yllä oleva spagetti saa parametrina pelaajan veikkauksen, ja sen perusteella palauttaa dataa sivulle. Toimii teoriassa
+
 
 if __name__ == '__main__':
     app.run(use_reloader=True, host='127.0.0.1', port=3000)
