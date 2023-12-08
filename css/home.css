@@ -65,7 +65,7 @@ nav {
 }
 
 .navbar ul li a:hover {
-    color: deeppink;
+    color: mediumpurple;
 }
 
 .logo {
@@ -113,7 +113,7 @@ main a {
 }
 
 main a:hover {
-    background-color: deeppink;
+    background-color: mediumpurple;
 }
 
 .box {
@@ -158,4 +158,20 @@ footer {
   margin-left: auto;
   margin-right: auto;
 
+}
+
+main {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 18%;
+
+}
+
+main img {
+    padding-left: 20px;
+}
+
+main a {
+    margin-top: 60px;
 }
