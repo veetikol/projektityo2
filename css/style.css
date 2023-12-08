@@ -272,8 +272,10 @@ footer {
     height: 10px;
     font-family: sans-serif;
     margin-right: 5px;
-    white-space: initial;
+
     overflow-y: scroll;
+    word-break: break-all;
+    white-space: normal;
 }
 
 .headerbox {
