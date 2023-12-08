@@ -62,7 +62,13 @@ const nimiInput = nimilaatikko.querySelector('p');
 
 startnappula.addEventListener("click", () => {
     event.preventDefault();
-    playerName(pelaajaformi.value);
+    // syötetään "virhekoodi", jos pelaaja syöttää tyhjän nimen
+    if (pelaajaformi.value == "") {
+        document.getElementById('emptyname').style.display = "block";
+    } else {
+        playerName(pelaajaformi.value);
+        document.getElementById('emptyname').style.display = "none";
+    }
 })
     
 async function playerName(name) {
