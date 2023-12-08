@@ -340,7 +340,7 @@ def tallenna(pelaaja, peli):
 
 
 if __name__ == '__main__':
-    app.run(use_reloader=True, host='127.0.0.1', port=3000)
+    app.run(use_reloader=True, host='localhost', port=5000)
 
 """Eli peliä on muutettu niin, että pyritään pitämään olioissa (pelaaja ja peli) kaikki data. 
 Tällä hetkellä valmiina on start-flask, ostavihje-flask ja veikkaa-flask. Pelin pitäisi ainakin paperilla
