@@ -7,27 +7,10 @@ const map = L.map('map').setView([51.505, -0.09], 13);
 // Pinnamerkitsijän lisääminen karttaan
 const marker = L.marker([51.5, -0.09]).addTo(map);
 
-// Ympyrämerkitsijän lisääminen karttaan
-const circle = L.circle([51.508, -0.11], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map);
-
-// Kolmiomerkitsijän lisääminen karttaan
-const polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-]).addTo(map);
-const konsoli = document.querySelector('.konsoli1')
 
 
 // Pop-up toiminnot markkereille, openPopup()-metodi avaa ikkunan välittömästi
 marker.bindPopup("I am a marker.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
 
 // Popup-ikkuna toiminto karttaan
 const popup = L.popup();
