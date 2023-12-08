@@ -45,40 +45,41 @@ position: relative;
 }
 
 /* Navbar css-asetukset */
-.topnav {
-    background-color: rgba(0,0,0,0.8);
-    border-radius: 25px;
-    border: 2px solid;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    padding: 10px;
-    height: 40px;
+.navbar {
+    width: 100%;
+    height: 4rem;
     display: flex;
     align-items: center;
-    text-align: center;
-    margin: auto;
-}
-
-
-.topnav a:hover {
-    background-color: black;
-    color: white;
-}
-
-.topnav a.active {
-    background-color: rebeccapurple;
-    color: white;
-}
-.navButton {
-    float: left;
-  color: floralwhite;
-
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-    border-radius: 17px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 15px;
 
 }
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+.navbar ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 100px;
+    font-family: sans-serif;
+
+}
+
+.navbar ul li a {
+    text-decoration: none;
+
+    font-size: larger;
+    font-family: sans-serif;
+    color: antiquewhite;
+}
+
+.navbar ul li a:hover {
+    color: deeppink;
+}
+
 /* Tietolaatikon css-asetukset */
 #tiedot {
 
@@ -233,13 +234,12 @@ position: relative;
    border-radius: 15px;
 }
 
-.logo-image{
+.logo {
+    object-fit: contain;
     width: 46px;
     height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -2px;
-
+    cursor: pointer;
+    margin-left: 40px;
 }
 
 footer {
