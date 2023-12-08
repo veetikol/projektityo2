@@ -3,9 +3,9 @@ import mysql.connector
 yhteys = mysql.connector.connect(
     host='localhost',
     port= 3306,
-    database='prokkis2',
+    database='projekti2',
     user='root',
-    password='Relaatio23s1',
+    password='veetik',
     autocommit=True
     )
 
