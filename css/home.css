@@ -110,10 +110,12 @@ main a {
     border-radius: 50px;
     padding: 14px 70px;
     margin-top: 30px;
+    transition: transform 0.3s ease-in-out;
 }
 
 main a:hover {
     background-color: mediumpurple;
+    transform: scale(1.1);
 }
 
 .box {
