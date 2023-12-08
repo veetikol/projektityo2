@@ -232,11 +232,13 @@ def start(nimi, pelaaja, peli):
         peli.lentokentat.append(y[1])
     pelaaja.nimi = nimi
     pelaaja.tavoitemaa = peli.maat[peli.listaindeksi]
+    vihje = haevihje(pelaaja, peli)
     vastaus = {
         "nimi": pelaaja.nimi,
         "rahat": pelaaja.rahat,
         "sijainti": pelaaja.sijaintimaa,
-        "kohdemaa": pelaaja.tavoitemaa  # Tämä saattaa olla turha
+        "kohdemaa": pelaaja.tavoitemaa,  # Tämä saattaa olla turha
+        "vihje": vihje
     }
     return vastaus  # Palautetaan vastaus json-muodossa.
 
