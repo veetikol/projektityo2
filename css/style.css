@@ -1,5 +1,5 @@
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:sans-serif;
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(https://www.pixground.com/wp-content/uploads/2023/07/Abstract-Gradient-Blue-Layers-AI-Generated-4K-Wallpaper-jpg.webp);
     background-repeat: no-repeat;
@@ -31,7 +31,7 @@ section {
 
 /* Kartan css -asetukset */
 #map {
-    height: 610px;
+    height: 623px;
     width: 740px;
     grid-row-start: auto;
     border-radius: 25px;
@@ -273,9 +273,10 @@ footer {
     font-family: sans-serif;
     margin-right: 5px;
 
-    overflow-y: scroll;
+
     word-break: break-all;
     white-space: normal;
+
 }
 
 .headerbox {
@@ -333,4 +334,12 @@ footer {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+#countries {
+     overflow-y: scroll;
+      word-break: break-all;
+    white-space: normal;
+
+
 }
