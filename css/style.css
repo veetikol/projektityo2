@@ -11,6 +11,8 @@ body {
     padding-bottom: 50px;
     overflow: overlay;
     overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 
 }
 
@@ -140,26 +142,19 @@ nav {
     border: 2px solid black;
     display: none;
     overflow-y: scroll;
-    display: none;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 0.5em;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(90, 90, 90);
-    border-radius: 6px;
+    background-color: transparent;
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(165, 165, 165, 0.863);
-    border-radius: 6px;
-}
 
 /* Tietolaatikon sisäiset tietolaatikot */
 .boxes {
