@@ -340,6 +340,65 @@ footer {
      overflow-y: scroll;
       word-break: break-all;
     white-space: normal;
+}
+
+.goal {
+  background-image: url('../img/splatter8.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 17rem 14rem;
+
+  position: absolute;
+  bottom: 25%;
+  filter: drop-shadow(0 0 30px #333);
+  transform: rotate(340deg);
+  line-height: 8rem;
+  z-index: 999;
+    width: 500px;
+    height: 120px;
+left: 30%;
+}
+
+.hide {
+  display: none;
+}
+
+#Continuenappula {
+    background-color: rgb(207,159,205);
+  border-radius: 100px;
+  box-shadow: rgba(207, 159, 205, .2) 0 -25px 18px -14px inset,rgba(207, 159, 205, .15) 0 1px 2px,rgba(207, 159, 205, .15) 0 2px 4px,rgba(207, 159, 205, .15) 0 4px 8px,rgba(207, 159, 205, .15) 0 8px 16px,rgba(207, 159, 205, .15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+     margin: 0;
+  position: relative;
+  top: 60%;
+  left: 45%;
+
+
+}
+#Continuenappula:hover {
+  box-shadow: rgba(207,159,205,.35) 0 -25px 18px -14px inset,rgba(207,159,205,.25) 0 1px 2px,rgba(207,159,205,.25) 0 2px 4px,rgba(207,159,205,.25) 0 4px 8px,rgba(207,159,205,.25) 0 8px 16px,rgba(207,159,205,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.pelaajaFormiP {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#ContinueForm {
+    padding: 25px;
 
 
 }
