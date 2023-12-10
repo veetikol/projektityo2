@@ -63,6 +63,21 @@ startnappula.addEventListener("click", () => {
     }
 })
 
+//Tuo oikein arvattu -animaation, tällä hetkellä käyttäjän syöttäessä sijainniksi "Suomi"
+function correctAnswer() {
+    if (guessInput.value=== "Suomi") {
+        document.querySelector('.goal').classList.remove('hide')
+    }
+
+}
+// Tapahtumakäsittelijä oikein arvattu -animaatiolle
+guessSubmit.addEventListener('click', correctAnswer)
+
+// Tapahtumakäsittelijä, joka piilottaa animaation sitä klikatessa
+document.querySelector('.goal').addEventListener('click', function (evt) {
+  evt.currentTarget.classList.add('hide');
+});
+
 async function playerName(name) {
     document.querySelector('.konsoli1').style.display = "none";
     document.querySelector('.konsoli2').style.display = "block";
