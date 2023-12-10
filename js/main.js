@@ -127,6 +127,19 @@ async function resetGame() {
 async function guessCountry(guess) {
     guessForm.style.display = "block";
     playerGuess = guess;
+
+    fetch('http://127.0.0.1:5000/veikkaa/' + playerGuess, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("saatu data:");
+            console.log(data.Vastaus);
+            console.log(data.sijainti)
+        })
     console.log(playerGuess);
     guessForm.style.display = "none";
 }

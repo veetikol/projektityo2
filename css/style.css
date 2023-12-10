@@ -9,7 +9,7 @@ body {
     -o-background-size: cover;
     background-attachment: fixed;
     padding-bottom: 50px;
-    overflow: hidden;
+    overflow: overlay;
     overflow-y: scroll;
 
 }
@@ -92,7 +92,7 @@ nav {
     border-radius: 25px;
     border: 2px solid black;
     min-width: 550px;
-position: relative;
+    position: relative;
 
 }
 
@@ -108,7 +108,7 @@ position: relative;
     color: antiquewhite;
     top: 35px;
     position: relative;
-    padding-left: 5px;
+    padding: 5px;
     border-radius: 25px;
     border: 2px solid black;
     min-width: 550px;
@@ -122,13 +122,11 @@ position: relative;
     color: antiquewhite;
     top: 35px;
     position: relative;
-    padding-left: 5px;
+    padding: 5px;
     border-radius: 25px;
     border: 2px solid black;
     display: none;
     overflow-y: scroll;
-
-
 }
 
 .konsoli3 {
@@ -148,6 +146,20 @@ position: relative;
     padding: 10px;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(90, 90, 90);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(165, 165, 165, 0.863);
+    border-radius: 6px;
+}
 
 /* Tietolaatikon sisäiset tietolaatikot */
 .boxes {
@@ -429,12 +441,10 @@ left: 30%;
     color: antiquewhite;
     top: 20px;
     position: relative;
-    padding-left: 5px;
+    padding: 15px;
     border-radius: 25px;
     border: 2px solid black;
     min-width: 550px;
-
-
 
 }
 
@@ -451,5 +461,9 @@ left: 30%;
 }
 
 #tip3 {
+    display: none;
+}
+
+#noTipMessage {
     display: none;
 }
