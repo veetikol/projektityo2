@@ -403,3 +403,19 @@ left: 30%;
 
 
 }
+
+.tipbox {
+    text-align: left;
+}
+
+#tip1 {
+    display: none;
+}
+
+#tip2 {
+    display: none;
+}
+
+#tip3 {
+    display: none;
+}

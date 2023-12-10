@@ -263,15 +263,18 @@ def haevihje(location):
 """
 
 
-@app.route('/vihje')
-def vihjeenosto(pelaaja, peli):
+@app.route('/vihje', methods=['GET'])
+def vihje():
+    print("vihjeen osto havaittu")
+    print(pelaaja.vihjeindeksi)
+    print(pelaaja.tavoitemaa)
     vihje = haevihje(pelaaja, peli)
-    vastaus = {
-        "vihje": vihje,
-        "rahat": pelaaja.rahat
-
+    vihjevastaus = {
+        "vihje": f"{vihje}",
+        "rahat": f"{pelaaja.rahat}"
     }
-    return vastaus
+    vihjeresponse = jsonify(vihjevastaus)
+    return vihjeresponse
 
 
 # Ylläoleva funktio hakee vihjeen, ja palauttaa sen ja päivittyneen rahatilanteen json-muodossa. Muu nettisivulla oleva

@@ -140,6 +140,32 @@ guessSubmit.addEventListener('click', () => {
     guessCountry(guessInput.value);
 })
 
+// Tapahtumankäsittelijä Tip-nappulalle
+const tipButton = document.getElementById('tipbutton');
+
+async function fetchTip() {
+    const response = await fetch('http://127.0.0.1:5000/vihje', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            let tipindex = 1;
+            let tipID = 'tip' + tipindex;
+            console.log(data.vihje)
+            console.log(data.rahat)
+            document.getElementById(tipID).style.display = "block";
+            document.getElementById(tipID).innerHTML = data.vihje;
+    })
+}
+
+tipButton.addEventListener('click', () => {
+    fetchTip()
+})
+
+
 
 // icons
 
