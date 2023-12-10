@@ -8,22 +8,17 @@ const map = L.map('map').setView([51.505, -0.09], 13);
 // Pinnamerkitsijän lisääminen karttaan
 const marker = L.marker([51.5, -0.09]).addTo(map);
 
-
-
 // Pop-up toiminnot markkereille, openPopup()-metodi avaa ikkunan välittömästi
 marker.bindPopup("I am a marker.").openPopup();
 
 // Popup-ikkuna toiminto karttaan
 const popup = L.popup();
 
-
 // TileLayerin lisääminen (openstreetmapista)
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-
 
 // Metodi, joka palauttaa paikan koordinaatin käyttäjän painaessa karttaa
 function onMapClick(e) {
