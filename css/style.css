@@ -9,6 +9,7 @@ body {
     -o-background-size: cover;
     background-attachment: fixed;
     padding-bottom: 50px;
+    overflow: hidden;
 
 }
 
@@ -137,6 +138,7 @@ position: relative;
     column-gap: 5px;
     row-gap: 1px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }
 
 #nimi {
@@ -161,11 +163,10 @@ position: relative;
     text-align: center;
     grid-column: 1/5;
     grid-row: 2/2;
+    overflow: hidden;
+
 
 }
-
-
-
 
 #kuva {
     height: 40px;
