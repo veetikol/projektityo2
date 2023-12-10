@@ -146,7 +146,9 @@ nav {
     margin-right: auto;
     padding: 10px;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 ::-webkit-scrollbar {
     width: 0.5em;
 }
