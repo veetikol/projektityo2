@@ -95,12 +95,12 @@ async function gameStart(name) {
         .then(data => {
             console.log(data.nimi)
             console.log(data.rahat)
+            document.getElementById("moneydatabox").innerHTML = data.rahat;
+            document.getElementById("locationdatabox").innerHTML = data.sijaintimaa;
     })
     .catch(error => {
         console.error('Error', error);
     });
-    let data = await response.json();
-    document.getElementById("moneydatabox").innerHTML = data.rahat
 }
 
 // exit-nappulan funktiot
@@ -126,6 +126,8 @@ async function guessCountry(guess) {
     guessForm.style.display = "block";
     playerGuess = guess;
     console.log(playerGuess);
+    guessForm.style.display = "none";
+
 }
 
 guessButton.addEventListener('click', () => {
