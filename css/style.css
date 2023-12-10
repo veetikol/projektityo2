@@ -389,8 +389,19 @@ footer {
     width: 500px;
     height: 120px;
 left: 30%;
+  animation: fadeInAndOut 4s ease-in-out forwards;
 }
 
+@keyframes fadeInAndOut {
+  0%, 100% {
+    opacity: 0;
+
+  }
+  50% {
+    opacity: 1;
+
+  }
+}
 .hide {
   display: none;
 }
@@ -412,10 +423,11 @@ left: 30%;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-     margin: 0;
-  position: relative;
-  top: 60%;
-  left: 45%;
+    width:100px;
+    margin: -20px -50px;
+    position:relative;
+    top:50%;
+    left:50%;
 
 
 }
