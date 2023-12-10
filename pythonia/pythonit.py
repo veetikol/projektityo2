@@ -224,21 +224,29 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/start', methods=['POST'])
-def start(pelaaja, peli):
+@app.route('/start', methods=['POST']) #methods pitää muistaa, muuten ei toimi
+def startti():
+    print(f"yhteys saatu")
     sqlhaku = maat()
     random.shuffle(sqlhaku)
     for x in sqlhaku:
         peli.maat.append(x[0])
     for y in sqlhaku:
         peli.lentokentat.append(y[1])
-    data = request.get_json()
-    muuttuja = data.get('variable', 'default_value')
-    pelaaja.nimi = muuttuja
-    pelaaja.tavoitemaa = peli.maat[peli.listaindeksi]
-    vihje = haevihje(pelaaja, peli)
-    return jsonify({'nimi': pelaaja.nimi})
-    return vastaus  # Palautetaan vastaus json-muodossa.
+    pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
+    print(pelaaja.rahat) # testausta varten printattu oliosta jotain.
+    data = request.get_json() # varastoidaan frontista saatu json data-muuttujaan
+    print(data) # printataan saatu data, jotta tiedetään, että frontista tulee jotain
+    pelaaja.nimi = data.get('text') # Tällä saadaan haluttu osa vastausta pythoniin.
+    print(pelaaja.nimi)
+    vastaus = {
+        'nimi': f"{pelaaja.nimi}",
+        'rahat': f"{pelaaja.rahat}",
+        'sijaintimaa': f"{pelaaja.sijaintimaa}",
+        'lentokm': f"{pelaaja.lentokm}"
+    }
+    response = jsonify(vastaus) # Tämä rivi muuttaa sanakirjamuodossa olevan vastauksen jsoniksi
+    return response # palautetaan json-vastaus
 
 
 """

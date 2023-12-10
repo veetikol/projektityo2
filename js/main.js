@@ -69,7 +69,7 @@ async function playerName(name) {
     pelaajanimi = name;
     nimiInput.innerHTML = pelaajanimi;
 
-    fetch('htpp://127.0.0.1:3000/start', {
+    fetch('http://127.0.0.1:5000/start', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
