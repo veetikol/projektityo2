@@ -136,7 +136,7 @@ position: relative;
     align-items: normal;
     column-gap: 5px;
     row-gap: 1px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #nimi {
