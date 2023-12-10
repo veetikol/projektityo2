@@ -58,7 +58,7 @@ startnappula.addEventListener("click", () => {
     if (pelaajaformi.value == "") {
         emptyname.style.display = "block";
     } else {
-        playerName(pelaajaformi.value);
+        gameStart(pelaajaformi.value);
         emptyname.style.display = "none";
     }
 })
@@ -78,13 +78,13 @@ document.querySelector('.goal').addEventListener('click', function (evt) {
   evt.currentTarget.classList.add('hide');
 });
 
-async function playerName(name) {
+async function gameStart(name) {
     document.querySelector('.konsoli1').style.display = "none";
     document.querySelector('.konsoli2').style.display = "block";
     pelaajanimi = name;
     nimiInput.innerHTML = pelaajanimi;
 
-    fetch('http://127.0.0.1:5000/start', {
+    const response = await fetch('http://127.0.0.1:5000/start', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -99,6 +99,8 @@ async function playerName(name) {
     .catch(error => {
         console.error('Error', error);
     });
+    let data = await response.json();
+    document.getElementById("moneydatabox").innerHTML = data.rahat
 }
 
 // exit-nappulan funktiot

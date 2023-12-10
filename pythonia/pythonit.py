@@ -15,13 +15,13 @@ class Player:
         self.lentokm = 0
         self.tavoitemaa = ""
         self.vihjeindeksi = 0
+        self.listaindeksi = 0
 
 
 class Game:
     def __init__(self, listasanakirja):
         self.maat = []
         self.lentokentat = []
-        self.listaindeksi = 0
         self.vihjeet = listasanakirja
 
 
