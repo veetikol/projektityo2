@@ -10,6 +10,7 @@ body {
     background-attachment: fixed;
     padding-bottom: 50px;
     overflow: hidden;
+    overflow-y: scroll;
 
 }
 
@@ -418,6 +419,21 @@ left: 30%;
 
 #ContinueForm {
     padding: 25px;
+
+
+}
+
+.konsoli4 {
+    background: rgba(0, 0, 0, 0.3);
+    height: 300px;
+    color: antiquewhite;
+    top: 20px;
+    position: relative;
+    padding-left: 5px;
+    border-radius: 25px;
+    border: 2px solid black;
+    min-width: 550px;
+
 
 
 }
