@@ -244,7 +244,8 @@ def startti():
         'nimi': f"{pelaaja.nimi}",
         'rahat': f"{pelaaja.rahat}",
         'sijaintimaa': f"{pelaaja.sijaintimaa}",
-        'lentokm': f"{pelaaja.lentokm}"
+        'lentokm': f"{pelaaja.lentokm}",
+        'tavoitemaa': f"{pelaaja.tavoitemaa}"
     }
     response = jsonify(vastaus) # Tämä rivi muuttaa sanakirjamuodossa olevan vastauksen jsoniksi
     return response # palautetaan json-vastaus

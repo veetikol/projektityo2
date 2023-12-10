@@ -31,12 +31,18 @@ function onMapClick(e) {
 // Tapahtumakäsittelijä onMapClick -metodille
 map.on('click', onMapClick);
 
+// funktio, joka vääntää stringien alkukirjaimet isoksi
+function capitalizeFirstLetter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+}
+
 // globaalit muuttujat
 
 let pelaajanimi = "";
 let playerGuess = "";
 let startURL = window.location.href;
-let URL_with_command = "";
+let distanceTraveled = 0;
+let targetCountry = "";
 const pelaajaformi = document.getElementById('pelaajainput');
 const startnappula = document.querySelector('#startnappula');
 const nimilaatikko = document.getElementById('nimi');
@@ -48,6 +54,10 @@ const guessForm = document.getElementById('guessForm');
 const guessInput = document.getElementById('guessInput');
 const guessSubmit = document.getElementById('guessEnter');
 const console3Exit = document.getElementById('console3Exit');
+const kilomdatabox = document.getElementById('kilomdatabox');
+const moneydatabox = document.getElementById('moneydatabox');
+const locationdatabox = document.getElementById('locationdatabox');
+const visitedCountris = document.getElementById('countries');
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
@@ -99,6 +109,7 @@ async function gameStart(name) {
             console.log(data.rahat)
             document.getElementById("moneydatabox").innerHTML = data.rahat;
             document.getElementById("locationdatabox").innerHTML = data.sijaintimaa;
+            targetCountry = data.tavoitemaa;
     })
     .catch(error => {
         console.error('Error', error);
@@ -136,9 +147,16 @@ async function guessCountry(guess) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log("saatu data:");
-            console.log(data.Vastaus);
-            console.log(data.sijainti)
+            distanceTraveled += data.lentokilometrit;
+            kilomdatabox.innerHTML = parseInt(distanceTraveled);
+            moneydatabox.innerHTML = data.Rahat;
+            locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti)
+            if (playerGuess === data.sijainti) {
+                // tämä tuo esiin well done -animaation, toistaisesi rikki
+                //document.querySelector('.goal').classList.remove('hide')
+                clearTips();
+            }
+            targetCountry = data.tavoitemaa;
         })
     console.log(playerGuess);
     guessForm.style.display = "none";
@@ -174,6 +192,7 @@ async function fetchTip() {
             console.log(tipID);
             console.log(data.vihje);
             console.log(data.rahat);
+            document.querySelector('.tipbox').style.display = "block";
             document.getElementById(tipID).style.display = "block";
             document.getElementById(tipID).innerHTML = data.vihje;
             document.getElementById('moneydatabox').innerHTML = data.rahat;
@@ -183,6 +202,14 @@ async function fetchTip() {
 tipButton.addEventListener('click', () => {
     fetchTip()
 })
+
+// funktio vhijeiden pyyhkimiselle sivulta 
+async function clearTips() {
+    document.querySelector('.tipbox').style.display = "none";
+    document.getElementById('tip1').innerHTML = "";
+    document.getElementById('tip2').innerHTML = "";
+    document.getElementById('tip3').innerHTML = "";
+}
 
 // maalistan funktio
 async function showCountryList() {

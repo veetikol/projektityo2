@@ -462,6 +462,7 @@ left: 30%;
 
 .tipbox {
     text-align: left;
+    display: none;
 }
 
 #tip1 {
