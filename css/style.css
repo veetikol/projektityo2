@@ -125,8 +125,26 @@ position: relative;
     border-radius: 25px;
     border: 2px solid black;
     display: none;
+    overflow-y: scroll;
 
 
+}
+
+.konsoli3 {
+    background: rgba(0, 0, 0, 0.3);
+    height: 300px;
+    width: 150px;
+    color: antiquewhite;
+    top: 35px;
+    position: relative;
+    border-radius: 25px;
+    border: 2px solid black;
+    display: none;
+    overflow-y: scroll;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
 }
 
 
@@ -261,7 +279,7 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
- padding: 10px;
+    padding: 10px;
     border-radius: 15px;
 }
 .databox {

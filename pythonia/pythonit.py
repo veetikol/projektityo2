@@ -269,6 +269,7 @@ def vihje():
     print(pelaaja.vihjeindeksi)
     print(pelaaja.tavoitemaa)
     vihje = haevihje(pelaaja, peli)
+    print(f"rahat: {pelaaja.rahat}")
     vihjevastaus = {
         "vihje": f"{vihje}",
         "rahat": f"{pelaaja.rahat}"

@@ -36,8 +36,8 @@ function onMapClick(e) {
 // Tapahtumakäsittelijä onMapClick -metodille
 map.on('click', onMapClick);
 
-// Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
-// ja luo tilalle pelaajavalinnat
+// globaalit muuttujat
+
 let pelaajanimi = "";
 let playerGuess = "";
 let startURL = window.location.href;
@@ -48,9 +48,14 @@ const nimilaatikko = document.getElementById('nimi');
 const nimiInput = nimilaatikko.querySelector('p');
 const emptyname = document.getElementById('emptyname');
 const guessButton = document.getElementById('guessButton');
+const countriesButton = document.getElementById('countriesButton');
 const guessForm = document.getElementById('guessForm');
 const guessInput = document.getElementById('guessInput');
 const guessSubmit = document.getElementById('guessEnter');
+const console3Exit = document.getElementById('console3Exit');
+
+// Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
+// ja luo tilalle pelaajavalinnat
 
 startnappula.addEventListener("click", () => {
     event.preventDefault();
@@ -65,7 +70,7 @@ startnappula.addEventListener("click", () => {
 
 //Tuo oikein arvattu -animaation, tällä hetkellä käyttäjän syöttäessä sijainniksi "Suomi"
 function correctAnswer() {
-    if (guessInput.value=== "Suomi") {
+    if (playerGuess === "Suomi") {
         document.querySelector('.goal').classList.remove('hide')
     }
 
@@ -77,6 +82,8 @@ guessSubmit.addEventListener('click', correctAnswer)
 document.querySelector('.goal').addEventListener('click', function (evt) {
   evt.currentTarget.classList.add('hide');
 });
+
+// pelin aloitusfunktio
 
 async function gameStart(name) {
     document.querySelector('.konsoli1').style.display = "none";
@@ -127,7 +134,6 @@ async function guessCountry(guess) {
     playerGuess = guess;
     console.log(playerGuess);
     guessForm.style.display = "none";
-
 }
 
 guessButton.addEventListener('click', () => {
@@ -138,9 +144,11 @@ guessButton.addEventListener('click', () => {
 guessSubmit.addEventListener('click', () => {
     event.preventDefault();
     guessCountry(guessInput.value);
+    correctAnswer();
 })
 
 // Tapahtumankäsittelijä Tip-nappulalle
+let tipindex = 1;
 const tipButton = document.getElementById('tipbutton');
 
 async function fetchTip() {
@@ -152,28 +160,51 @@ async function fetchTip() {
     })
         .then(response => response.json())
         .then(data => {
-            let tipindex = 1;
             let tipID = 'tip' + tipindex;
-            console.log(data.vihje)
-            console.log(data.rahat)
+            tipindex += 1;
+            console.log(tipindex);
+            console.log(tipID);
+            console.log(data.vihje);
+            console.log(data.rahat);
             document.getElementById(tipID).style.display = "block";
             document.getElementById(tipID).innerHTML = data.vihje;
-    })
+            document.getElementById('moneydatabox').innerHTML = data.rahat;
+        })
 }
 
 tipButton.addEventListener('click', () => {
     fetchTip()
 })
 
+// maalistan funktio
+async function showCountryList() {
+    document.querySelector('.konsoli1').style.display = "none";
+    document.querySelector('.konsoli2').style.display = "none";
+    document.querySelector('.konsoli3').style.display = "block";
+}
 
+countriesButton.addEventListener('click', () => {
+    event.preventDefault();
+    showCountryList();
+})
+
+// maalistan exit-nappi
+async function exitCountryList() {
+    document.querySelector('.konsoli1').style.display = "none";
+    document.querySelector('.konsoli2').style.display = "block";
+    document.querySelector('.konsoli3').style.display = "none";
+}
+
+console3Exit.addEventListener('click', () => {
+    event.preventDefault();
+    exitCountryList();
+})
 
 // icons
 
 // form for player name
 
 // function to fetch data from API
-async function fetchData() {
-}
 
 // function to update game status
 
