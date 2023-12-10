@@ -133,7 +133,7 @@ nav {
 
 .konsoli3 {
     background: rgba(0, 0, 0, 0.3);
-    height: 300px;
+    height: 275px;
     width: 150px;
     color: antiquewhite;
     top: 35px;
@@ -145,6 +145,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
+
 }
 ::-webkit-scrollbar {
   display: none;
