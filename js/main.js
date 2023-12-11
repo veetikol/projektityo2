@@ -168,7 +168,7 @@ async function guessCountry(guess) {
         .then(data => {
             if (playerGuess === targetCountry) {
                 // tämä tuo esiin well done -animaation, toistaisesi rikki
-                // document.querySelector('.goal').classList.remove('hide')
+                document.querySelector('.goal').classList.remove('hide')
 
                 distanceTraveled += data.lentokilometrit;
                 kilomdatabox.innerHTML = parseInt(distanceTraveled);
