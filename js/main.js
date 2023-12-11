@@ -91,9 +91,20 @@ function correctAnswer() {
 // Tapahtumakäsittelijä oikein arvattu -animaatiolle
 guessSubmit.addEventListener('click', correctAnswer)
 
+
 // Tapahtumakäsittelijä, joka piilottaa animaation sitä klikatessa
 document.querySelector('.goal').addEventListener('click', function (evt) {
   evt.currentTarget.classList.add('hide');
+});
+
+function GameOver() {
+    if ( moneydatabox.value === 0) {
+        document.querySelector('.goal2').classList.remove('hide2')
+    }
+}
+
+document.querySelector('.goal2').addEventListener('click', function (evt) {
+  evt.currentTarget.classList.add('hide2');
 });
 
 // pelin aloitusfunktio
