@@ -16,6 +16,7 @@ class Player:
         self.tavoitemaa = ""
         self.vihjeindeksi = 0
         self.listaindeksi = 0
+        self.veikkausindeksi = 0
 
 
 class Game:
@@ -180,6 +181,7 @@ def haevihje(pelaaja, peli):
             # tuloste = (countries[päämäärä][vihjeindeksi])
             tuloste = peli.vihjeet[pelaaja.tavoitemaa][pelaaja.vihjeindeksi]  # Tallettaa vihjeen tuloste-muuttujaan
             pelaaja.vihjeindeksi += 1  # Vihjeindeksi kasvaa, kun oikea vihje tallessa
+            pelaaja.veikkausindeksi += 1 # Veikkausindeksi kasvaa, kun painetaan submitGuess
             pelaaja.rahat -= 100  # Rahaa lähtee
     return tuloste  # Palauttaa vihjeen stringinä
 
@@ -288,6 +290,7 @@ def veikkaa(veikkaus):
     if pelaaja.tavoitemaa == veikkaus:
         pelaaja.rahat += 100
         pelaaja.vihjeindeksi = 0
+        pelaaja.veikkausindeksi = 0
         kayty = pelaaja.tavoitemaa
         pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
         pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
@@ -308,19 +311,19 @@ def veikkaa(veikkaus):
         return vastaus
 
     else:
-        if pelaaja.vihjeindeksi == 2:
+        if pelaaja.veikkausindeksi == 2:
             pelaaja.sijaintimaa = pelaaja.tavoitemaa
             pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             lentomatka = calculateDistance(pelaaja, peli)
             pelaaja.lentokm += lentomatka
             pelaaja.rahat -= 100
             pelaaja.vihjeindeksi = 0
+            pelaaja.veikkausindeksi = 0
 
             pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
             vastaus = {
                 "Vastaus": "Väärin",
-                "Vihjeet": "Loppu",
                 "Rahat": pelaaja.rahat,
                 "sijainti": pelaaja.sijaintimaa,
                 "lentokenttä": pelaaja.sijaintiairport,
@@ -330,16 +333,23 @@ def veikkaa(veikkaus):
             }
             return vastaus
 
-        else:
-            vihje = haevihje(pelaaja, peli)
+        elif pelaaja.veikkausindeksi != 2:
+            pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
+            pelaaja.veikkausindeksi += 1
+            print(f"veikkaus nro: {pelaaja.veikkausindeksi}")
             vastaus = {
                 "Vastaus": "Väärin",
                 "Vihjeitä": "Jäljellä",
                 "Rahat": pelaaja.rahat,
-                "Vihje": vihje
 
             }
-
+            return vastaus
+        
+        elif vihjeindeksi == 2:
+            vastaus = {
+                "Vihjeitä": "ei jäljellä",
+                "Rahat": pelaaja.rahat,
+            }
             return vastaus
 
 

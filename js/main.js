@@ -43,6 +43,7 @@ let playerGuess = "";
 let startURL = window.location.href;
 let distanceTraveled = 0;
 let targetCountry = "";
+let GuessedRight = false;
 const pelaajaformi = document.getElementById('pelaajainput');
 const startnappula = document.querySelector('#startnappula');
 const nimilaatikko = document.getElementById('nimi');
@@ -147,14 +148,32 @@ async function guessCountry(guess) {
     })
         .then(response => response.json())
         .then(data => {
-            distanceTraveled += data.lentokilometrit;
-            kilomdatabox.innerHTML = parseInt(distanceTraveled);
-            moneydatabox.innerHTML = data.Rahat;
-            locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti)
-            if (playerGuess === data.sijainti) {
+            if (playerGuess === targetCountry) {
                 // tämä tuo esiin well done -animaation, toistaisesi rikki
-                //document.querySelector('.goal').classList.remove('hide')
+                // document.querySelector('.goal').classList.remove('hide')
+
+                distanceTraveled += data.lentokilometrit;
+                kilomdatabox.innerHTML = parseInt(distanceTraveled);
+                moneydatabox.innerHTML = data.Rahat;
+                locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti)
                 clearTips();
+                targetCountry = data.tavoitemaa;
+                GuessedRight = true;
+
+            } else if (playerGuess !== targetCountry && data.Vihjeitä === "Jäljellä") {
+                console.log("väärä veikkaus");
+                // tähän väärä vastaus -animaatio
+            } else if (data.Vihjeitä === "ei jäljellä") {
+                document.getElementById('noTipMessage').style.display = "block";
+            } else {
+                // tähän väärä vastaus - animaatio ja siirtyminen seuraavaan maahan
+                targetCountry = data.tavoitemaa;
+                locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti);
+                moneydatabox.innerHTML = data.Rahat;
+                distanceTraveled += data.lentokilometrit;
+                kilomdatabox.innerHTML = parseInt(distanceTraveled);
+                clearTips();
+                GuessedRight = false;
             }
             targetCountry = data.tavoitemaa;
         })
@@ -206,9 +225,13 @@ tipButton.addEventListener('click', () => {
 // funktio vhijeiden pyyhkimiselle sivulta 
 async function clearTips() {
     document.querySelector('.tipbox').style.display = "none";
+    document.getElementById('tip1').style.display = "none";
+    document.getElementById('tip2').style.display = "none";
+    document.getElementById('tip3').style.display = "none";
     document.getElementById('tip1').innerHTML = "";
     document.getElementById('tip2').innerHTML = "";
     document.getElementById('tip3').innerHTML = "";
+    tipindex = 1;
 }
 
 // maalistan funktio
