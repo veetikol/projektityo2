@@ -324,6 +324,7 @@ footer {
     font-family: sans-serif;
     margin-right: 5px;
     white-space: initial;
+    text-align: center;
 }
 
 #emptyname {

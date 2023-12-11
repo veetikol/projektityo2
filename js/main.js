@@ -66,6 +66,7 @@ const kilomdatabox = document.getElementById('kilomdatabox');
 const moneydatabox = document.getElementById('moneydatabox');
 const locationdatabox = document.getElementById('locationdatabox');
 const visitedCountris = document.getElementById('countries');
+const promptBox = document.getElementById('story');
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
@@ -81,13 +82,6 @@ startnappula.addEventListener("click", () => {
     }
 })
 
-//Tuo oikein arvattu -animaation, tällä hetkellä käyttäjän syöttäessä sijainniksi "Suomi"
-function correctAnswer() {
-    if (playerGuess === "Suomi") {
-        document.querySelector('.goal').classList.remove('hide')
-    }
-
-}
 // Tapahtumakäsittelijä oikein arv
 
 // Tapahtumakäsittelijä, joka piilottaa animaation sitä klikatessa
@@ -167,7 +161,6 @@ async function guessCountry(guess) {
             if (playerGuess === targetCountry) {
                 // tämä tuo esiin well done -animaation, toistaisesi rikki
                 document.querySelector('.goal').classList.remove('hide')
-
                 distanceTraveled += data.lentokilometrit;
                 kilomdatabox.innerHTML = parseInt(distanceTraveled);
                 moneydatabox.innerHTML = data.Rahat;
@@ -178,9 +171,11 @@ async function guessCountry(guess) {
                 document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
                 let koordinaatit = data.koordinaatit;
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
+                promptBox.innerHTML = "Correct answer! Flying to your destination..."
 
             } else if (playerGuess !== targetCountry && data.Vihjeitä === "Jäljellä") {
                 console.log("väärä veikkaus");
+                promptBox.innerHTML = "Wrong country!"
                 // tähän väärä vastaus -animaatio
             } else if (data.Vihjeitä === "ei jäljellä") {
                 document.getElementById('noTipMessage').style.display = "block";
@@ -196,6 +191,7 @@ async function guessCountry(guess) {
                 document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
                 let koordinaatit = data.koordinaatit;
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
+                promptBox.innerHTML = "Wrong country! The right answer was " + capitalizeFirstLetter(data.sijainti) + ". Flying to your correct destination and giving you a penalty..."
             }
             targetCountry = data.tavoitemaa;
         })
@@ -211,7 +207,6 @@ guessButton.addEventListener('click', () => {
 guessSubmit.addEventListener('click', () => {
     event.preventDefault();
     guessCountry(guessInput.value);
-    correctAnswer();
 })
 
 // Tapahtumankäsittelijä Tip-nappulalle
