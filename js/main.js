@@ -88,9 +88,7 @@ function correctAnswer() {
     }
 
 }
-// Tapahtumakäsittelijä oikein arvattu -animaatiolle
-guessSubmit.addEventListener('click', correctAnswer)
-
+// Tapahtumakäsittelijä oikein arv
 
 // Tapahtumakäsittelijä, joka piilottaa animaation sitä klikatessa
 document.querySelector('.goal').addEventListener('click', function (evt) {
