@@ -195,6 +195,9 @@ async function guessCountry(guess) {
                 kilomdatabox.innerHTML = parseInt(distanceTraveled);
                 clearTips();
                 GuessedRight = false;
+                document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
+                let koordinaatit = data.koordinaatit;
+                changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
             }
             targetCountry = data.tavoitemaa;
         })
@@ -254,6 +257,7 @@ async function clearTips() {
     document.getElementById('tip1').style.display = "none";
     document.getElementById('tip2').style.display = "none";
     document.getElementById('tip3').style.display = "none";
+    document.getElementById('noTipMessage').style.display = "none";
     document.getElementById('tip1').innerHTML = "";
     document.getElementById('tip2').innerHTML = "";
     document.getElementById('tip3').innerHTML = "";
