@@ -202,6 +202,13 @@ def calculateDistance(pelaaja, peli):
     distance = geodesic(tulos1, tulos2).km
     return distance
 
+def nykyinenSijainti(pelaaja):
+    haku = f"SELECT latitude_deg, longitude_deg FROM airport WHERE name = '{pelaaja.sijaintiairport}';"
+    kursori = yhteys.cursor()
+    kursori.execute(haku)
+    koordinaatit = kursori.fetchone()
+    return koordinaatit
+
 
 pelaaja = Player()
 peli = Game(countries)  # Luodaan taustapalvelun käynnistyessä peli- ja pelaaja-oliot
@@ -287,7 +294,7 @@ def vihje():
             "rahat": f"{pelaaja.rahat}"
         }
         vihjeresponse = jsonify(vihjevastaus)
-        return vihjeresponse
+        return vihjevastaus
 
 
 # Ylläoleva funktio hakee vihjeen, ja palauttaa sen ja päivittyneen rahatilanteen json-muodossa. Muu nettisivulla oleva
@@ -303,6 +310,7 @@ def veikkaa(veikkaus):
         pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
         pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
         lentomatka = calculateDistance(pelaaja, peli)  # Pelaajan lentomatka lasketaan. Vihjeindeksi kasvaa funktion sisällä
+        koordinaatit = nykyinenSijainti(pelaaja)
         pelaaja.lentokm += lentomatka  # pelaajan lentokilometreihin lisätään lentomatka
         pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
@@ -313,6 +321,7 @@ def veikkaa(veikkaus):
             "lentokenttä": pelaaja.sijaintiairport,
             "tavoitemaa": pelaaja.tavoitemaa,
             "lentokilometrit": pelaaja.lentokm,
+            "koordinaatit": koordinaatit,
             "käyty maa": kayty
 
         }
@@ -324,6 +333,7 @@ def veikkaa(veikkaus):
             pelaaja.sijaintimaa = pelaaja.tavoitemaa
             pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             lentomatka = calculateDistance(pelaaja, peli)
+            koordinaatit = nykyinenSijainti(pelaaja)
             pelaaja.lentokm += lentomatka
             pelaaja.rahat -= 200
             pelaaja.vihjeindeksi = 0
@@ -337,7 +347,8 @@ def veikkaa(veikkaus):
                 "sijainti": pelaaja.sijaintimaa,
                 "lentokenttä": pelaaja.sijaintiairport,
                 "tavoitemaa": pelaaja.tavoitemaa,
-                "lentokilometrit": pelaaja.lentokm
+                "lentokilometrit": pelaaja.lentokm,
+                "koordinaatit": koordinaatit
 
             }
             return vastaus

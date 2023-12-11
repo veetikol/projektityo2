@@ -3,13 +3,13 @@
 /* 1. show map using Leaflet library. (L comes from the Leaflet library) */
 
 // Haetaan kartta ja keskitetään se aluksi Lontooseen
-let map = L.map('map').setView([60.316, 24.957], 7);
+let map = L.map('map').setView([60.316, 24.957], 6);
 
 // Pinnamerkitsijän lisääminen karttaan
 let marker = L.marker([60.316, 24.957]).addTo(map);
 
 // Pop-up toiminnot markkereille, openPopup()-metodi avaa ikkunan välittömästi
-marker.bindPopup("I am a marker.").openPopup();
+marker.bindPopup("Your journey begins here!").openPopup();
 
 // Popup-ikkuna toiminto karttaan
 let popup = L.popup();
@@ -22,9 +22,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // funktio kartan näkymän siirtämiselle oikeaan maahan
 async function changeMapView(lat, longt, dest) {
-    map = L.map('map').setView([lat, longt], 7);
+    map.setView([lat, longt], 5);
     marker = L.marker([lat, longt]).addTo(map);
-    marker.bindPopup("You have arrived at " + dest + "!");
+    marker.bindPopup("You have arrived at " + dest + "!").openPopup();
 }
 
 // Metodi, joka palauttaa paikan koordinaatin käyttäjän painaessa karttaa
@@ -167,6 +167,8 @@ async function guessCountry(guess) {
                 targetCountry = data.tavoitemaa;
                 GuessedRight = true;
                 document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
+                let koordinaatit = data.koordinaatit;
+                changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
 
             } else if (playerGuess !== targetCountry && data.Vihjeitä === "Jäljellä") {
                 console.log("väärä veikkaus");
