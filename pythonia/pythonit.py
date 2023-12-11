@@ -272,14 +272,22 @@ def vihje():
     print("vihjeen osto havaittu")
     print(pelaaja.vihjeindeksi)
     print(pelaaja.tavoitemaa)
-    vihje = haevihje(pelaaja, peli)
-    print(f"rahat: {pelaaja.rahat}")
-    vihjevastaus = {
-        "vihje": f"{vihje}",
-        "rahat": f"{pelaaja.rahat}"
-    }
-    vihjeresponse = jsonify(vihjevastaus)
-    return vihjeresponse
+    if pelaaja.vihjeindeksi > 2:
+        vihjevastaus = {
+                "vihje": "ei jäljellä",
+                "rahat": f"{pelaaja.rahat}"
+            }
+        vihjeresponse = jsonify(vihjevastaus)
+        return vihjevastaus
+    else:
+        vihje = haevihje(pelaaja, peli)
+        print(f"rahat: {pelaaja.rahat}")
+        vihjevastaus = {
+            "vihje": f"{vihje}",
+            "rahat": f"{pelaaja.rahat}"
+        }
+        vihjeresponse = jsonify(vihjevastaus)
+        return vihjeresponse
 
 
 # Ylläoleva funktio hakee vihjeen, ja palauttaa sen ja päivittyneen rahatilanteen json-muodossa. Muu nettisivulla oleva
@@ -288,7 +296,7 @@ def vihje():
 @app.route('/veikkaa/<veikkaus>')
 def veikkaa(veikkaus):
     if pelaaja.tavoitemaa == veikkaus:
-        pelaaja.rahat += 100
+        pelaaja.rahat += 200
         pelaaja.vihjeindeksi = 0
         pelaaja.veikkausindeksi = 0
         kayty = pelaaja.tavoitemaa
@@ -308,6 +316,7 @@ def veikkaa(veikkaus):
             "käyty maa": kayty
 
         }
+        print(f"tavoite: {pelaaja.tavoitemaa}")
         return vastaus
 
     else:
@@ -316,7 +325,7 @@ def veikkaa(veikkaus):
             pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             lentomatka = calculateDistance(pelaaja, peli)
             pelaaja.lentokm += lentomatka
-            pelaaja.rahat -= 100
+            pelaaja.rahat -= 200
             pelaaja.vihjeindeksi = 0
             pelaaja.veikkausindeksi = 0
 
@@ -345,7 +354,7 @@ def veikkaa(veikkaus):
             }
             return vastaus
         
-        elif vihjeindeksi == 2:
+        elif pelaaja.vihjeindeksi > 2:
             vastaus = {
                 "Vihjeitä": "ei jäljellä",
                 "Rahat": pelaaja.rahat,

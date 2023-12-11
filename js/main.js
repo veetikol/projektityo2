@@ -159,6 +159,7 @@ async function guessCountry(guess) {
                 clearTips();
                 targetCountry = data.tavoitemaa;
                 GuessedRight = true;
+                document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
 
             } else if (playerGuess !== targetCountry && data.Vihjeitä === "Jäljellä") {
                 console.log("väärä veikkaus");
@@ -205,16 +206,21 @@ async function fetchTip() {
     })
         .then(response => response.json())
         .then(data => {
-            let tipID = 'tip' + tipindex;
-            tipindex += 1;
-            console.log(tipindex);
-            console.log(tipID);
-            console.log(data.vihje);
-            console.log(data.rahat);
-            document.querySelector('.tipbox').style.display = "block";
-            document.getElementById(tipID).style.display = "block";
-            document.getElementById(tipID).innerHTML = data.vihje;
-            document.getElementById('moneydatabox').innerHTML = data.rahat;
+            if (data.vihje !== "ei jäljellä") {
+                let tipID = 'tip' + tipindex;
+                tipindex += 1;
+                console.log(tipindex);
+                console.log(tipID);
+                console.log(data.vihje);
+                console.log(data.rahat);
+                document.querySelector('.tipbox').style.display = "block";
+                document.getElementById(tipID).style.display = "block";
+                document.getElementById(tipID).innerHTML = data.vihje;
+                document.getElementById('moneydatabox').innerHTML = data.rahat;
+            } else {
+                document.getElementById('noTipMessage').style.display = "block";
+            }
+            
         })
 }
 
