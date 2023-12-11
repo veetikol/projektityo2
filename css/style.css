@@ -373,31 +373,29 @@ footer {
 }
 
 .goal {
-  background-image: url('../img/splatter8.png');
+  background-image: url('../img/WELL done.png');
   background-size: contain;
   background-repeat: no-repeat;
   padding: 17rem 14rem;
 
   position: absolute;
-  bottom: 25%;
+  bottom: 5%;
   filter: drop-shadow(0 0 30px #333);
   transform: rotate(340deg);
   line-height: 8rem;
   z-index: 999;
     width: 500px;
     height: 120px;
-left: 30%;
-  animation: fadeInAndOut 4s ease-in-out forwards;
+
+  animation: moveImage 5s linear infinite;
 }
 
-@keyframes fadeInAndOut {
-  0%, 100% {
-    opacity: 0;
-
+@keyframes moveImage {
+  0% {
+    left: -500px; /* Alkutila, kuva on näytön vasemmalta ulkopuolella */
   }
-  50% {
-    opacity: 1;
-
+  100% {
+    left: 100vw; /* Lopputila, kuva on näytön oikeassa reunassa */
   }
 }
 .hide {
