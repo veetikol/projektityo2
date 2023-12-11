@@ -484,6 +484,7 @@ left: 20%;
     border-radius: 25px;
     border: 2px solid black;
     min-width: 550px;
+    overflow-y: scroll;
 
 }
 
