@@ -3,22 +3,29 @@
 /* 1. show map using Leaflet library. (L comes from the Leaflet library) */
 
 // Haetaan kartta ja keskitetään se aluksi Lontooseen
-const map = L.map('map').setView([51.505, -0.09], 13);
+let map = L.map('map').setView([60.316, 24.957], 7);
 
 // Pinnamerkitsijän lisääminen karttaan
-const marker = L.marker([51.5, -0.09]).addTo(map);
+let marker = L.marker([60.316, 24.957]).addTo(map);
 
 // Pop-up toiminnot markkereille, openPopup()-metodi avaa ikkunan välittömästi
 marker.bindPopup("I am a marker.").openPopup();
 
 // Popup-ikkuna toiminto karttaan
-const popup = L.popup();
+let popup = L.popup();
 
 // TileLayerin lisääminen (openstreetmapista)
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+// funktio kartan näkymän siirtämiselle oikeaan maahan
+async function changeMapView(lat, longt, dest) {
+    map = L.map('map').setView([lat, longt], 7);
+    marker = L.marker([lat, longt]).addTo(map);
+    marker.bindPopup("You have arrived at " + dest + "!");
+}
 
 // Metodi, joka palauttaa paikan koordinaatin käyttäjän painaessa karttaa
 function onMapClick(e) {
