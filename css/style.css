@@ -9,7 +9,6 @@ body {
     -o-background-size: cover;
     background-attachment: fixed;
     padding-bottom: 50px;
-    overflow: overlay;
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
@@ -399,6 +398,38 @@ footer {
   }
 }
 .hide {
+  display: none;
+}
+
+.goal2 {
+  background-image: url('../img/Game Over.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 17rem 14rem;
+left: 20%;
+  position: absolute;
+  bottom: 5%;
+  filter: drop-shadow(0 0 30px #333);
+  transform: rotate(340deg);
+  line-height: 8rem;
+  z-index: 999;
+    width: 500px;
+    height: 120px;
+
+  animation: moveImage2 3s linear infinite;
+}
+
+@keyframes moveImage2 {
+  0% {
+    top: -120px; /* Alkutila, kuva näytön yläpuolella */
+  }
+  100% {
+    top: 100vh; /* Lopputila, kuva näytön alapuolella */
+  }
+}
+
+
+.hide2 {
   display: none;
 }
 
