@@ -341,6 +341,7 @@ def veikkaa(veikkaus):
             pelaaja.rahat -= 200
             pelaaja.vihjeindeksi = 0
             pelaaja.veikkausindeksi = 0
+            pelaaja.listaindeksi += 1
 
             pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
