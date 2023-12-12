@@ -280,7 +280,7 @@ def vihje():
     print("vihjeen osto havaittu")
     print(pelaaja.vihjeindeksi)
     print(pelaaja.tavoitemaa)
-    if pelaaja.vihjeindeksi >= 2:
+    if pelaaja.vihjeindeksi > 2:
         vihjevastaus = {
                 "vihje": "ei jäljellä",
                 "rahat": f"{pelaaja.rahat}"
