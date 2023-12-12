@@ -194,7 +194,6 @@ def calculateDistance(pelaaja, peli):
     search2 += f" WHERE name = '{peli.lentokentat[pelaaja.listaindeksi]}' AND type = 'large_airport';"
     print(f"{pelaaja.sijaintiairport}")
     print(f"{peli.lentokentat[pelaaja.listaindeksi]}")
-    pelaaja.listaindeksi += 1
     kursori = yhteys.cursor()
     kursori.execute(search1)
     tulos1 = kursori.fetchone()
@@ -280,7 +279,7 @@ def vihje():
     print("vihjeen osto havaittu")
     print(pelaaja.vihjeindeksi)
     print(pelaaja.tavoitemaa)
-    if pelaaja.vihjeindeksi >= 2:
+    if pelaaja.vihjeindeksi > 2:
         vihjevastaus = {
                 "vihje": "ei jäljellä",
                 "rahat": f"{pelaaja.rahat}"
@@ -309,10 +308,11 @@ def veikkaa(veikkaus):
         pelaaja.vihjeindeksi = 0
         pelaaja.veikkausindeksi = 0
         kayty = pelaaja.tavoitemaa
-        pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
-        koordinaatit = nykyinenSijainti(pelaaja) # Pelaajan lentomatka lasketaan. Vihjeindeksi kasvaa funktion sisällä
         lentomatka = calculateDistance(pelaaja, peli)
         pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
+        koordinaatit = nykyinenSijainti(pelaaja) # Pelaajan lentomatka lasketaan. Vihjeindeksi kasvaa funktion sisällä
+        pelaaja.listaindeksi += 1
+        pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
         pelaaja.lentokm += lentomatka  # pelaajan lentokilometreihin lisätään lentomatka
         pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
@@ -340,6 +340,7 @@ def veikkaa(veikkaus):
             pelaaja.rahat -= 200
             pelaaja.vihjeindeksi = 0
             pelaaja.veikkausindeksi = 0
+            pelaaja.listaindeksi += 1
 
             pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
