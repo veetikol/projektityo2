@@ -247,6 +247,7 @@ nav {
   -webkit-user-select: none;
   touch-action: manipulation;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 .button-33:hover {
@@ -320,11 +321,11 @@ footer {
     border-radius: 15px;
     padding: 10px;
     overflow: hidden;
-    height: 50px;
+    height: auto;
     font-family: sans-serif;
     margin-right: 5px;
     white-space: initial;
-    text-align: center;
+
 }
 
 #emptyname {
