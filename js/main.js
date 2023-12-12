@@ -68,6 +68,7 @@ const moneydatabox = document.getElementById('moneydatabox');
 const locationdatabox = document.getElementById('locationdatabox');
 const visitedCountries = document.getElementById('countries');
 const promptBox = document.getElementById('story');
+const startOverButton = document.getElementById('startOverButton');
 const audioCorrect = new Audio('sound/pilot.mp3')
 const audioWrong = new Audio('sound/wrong.mp3')
 const audioGameOver = new Audio('sound/GameOver.mp3')
@@ -193,6 +194,7 @@ async function guessCountry(guess) {
                 document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
                 let koordinaatit = data.koordinaatit;
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
+                isGameOver();
                 promptBox.innerHTML = "Wrong country! The right answer was " + capitalizeFirstLetter(data.sijainti) + ". Flying to your correct destination and giving you a penalty..."
             }
             targetCountry = data.tavoitemaa;
@@ -234,6 +236,7 @@ async function fetchTip() {
                 document.getElementById(tipID).style.display = "block";
                 document.getElementById(tipID).innerHTML = data.vihje;
                 document.getElementById('moneydatabox').innerHTML = data.rahat;
+                isGameOver();
             } else {
                 document.getElementById('noTipMessage').style.display = "block";
             }
@@ -295,7 +298,7 @@ async function isGameOver() {
             if(data.game === "over") {
                 promptBox.innerHTML = 'Game over!';
                 moneydatabox.innerHTML = "";
-                nimilaatikko.innerHTML = "";
+                document.getElementById('player-input').innerHTML = "";
                 kilomdatabox.innerHTML = "";
                 locationdatabox.innerHTML = "";
                 visitedCountries.innerHTML = "";
@@ -306,6 +309,11 @@ async function isGameOver() {
 
         })
 }
+
+startOverButton.addEventListener('click', () => {
+    location.reload();
+})
+
 
 // form for player name
 

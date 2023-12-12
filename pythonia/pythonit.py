@@ -9,7 +9,7 @@ import random
 class Player:
     def __init__(self):
         self.nimi = ""
-        self.rahat = 1000
+        self.rahat = 0
         self.sijaintimaa = "Finland"
         self.sijaintiairport = "Helsinki Vantaa Airport"
         self.lentokm = 0
@@ -236,6 +236,7 @@ CORS(app)
 @app.route('/start', methods=['POST']) #methods pitää muistaa, muuten ei toimi
 def startti():
     print(f"yhteys saatu")
+    pelaaja.rahat = 1000
     sqlhaku = maat()
     random.shuffle(sqlhaku)
     for x in sqlhaku:
@@ -390,6 +391,9 @@ def isGameOver():
         pelaaja.vihdeindeksi = 0
         pelaaja.listaindeksi = 0
         pelaaja.veikkausindeksi = 0
+
+        peli.maat = []
+        peli.lentokentat = []
         vastaus = {
                 "game": "over"
             }
