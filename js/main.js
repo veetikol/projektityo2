@@ -45,6 +45,7 @@ function capitalizeFirstLetter(text) {
 
 // globaalit muuttujat
 
+let tipindex = 1;
 let pelaajanimi = "";
 let playerGuess = "";
 let startURL = window.location.href;
@@ -172,7 +173,7 @@ async function guessCountry(guess) {
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
                 promptBox.innerHTML = "Correct answer! Flying to your destination..."
 
-            } else if (data.Vastaus === "Väärin" && data.Vihjeitä === "Jäljellä") {
+            } else if (data.Vastaus === "Väärin" && data.Veikkauksia === "Jäljellä") {
                 console.log("väärä veikkaus");
                 promptBox.innerHTML = "Wrong country!"
                 audioWrong.play();
@@ -181,6 +182,7 @@ async function guessCountry(guess) {
                 document.getElementById('noTipMessage').style.display = "block";
             } else if (data.Veikkauksia === "ei jäljellä") {
                 // tähän väärä vastaus - animaatio ja siirtyminen seuraavaan maahan
+                tipindex = 1;
                 targetCountry = data.tavoitemaa;
                 locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti);
                 moneydatabox.innerHTML = data.Rahat;
@@ -210,7 +212,6 @@ guessSubmit.addEventListener('click', () => {
 })
 
 // Tapahtumankäsittelijä Tip-nappulalle
-let tipindex = 1;
 const tipButton = document.getElementById('tipbutton');
 
 async function fetchTip() {

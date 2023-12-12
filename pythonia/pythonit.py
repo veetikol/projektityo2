@@ -279,13 +279,13 @@ def vihje():
     print("vihjeen osto havaittu")
     print(pelaaja.vihjeindeksi)
     print(pelaaja.tavoitemaa)
-    if pelaaja.vihjeindeksi > 2:
+    if pelaaja.vihjeindeksi >= 2:
         vihjevastaus = {
                 "vihje": "ei jäljellä",
                 "rahat": f"{pelaaja.rahat}"
             }
         vihjeresponse = jsonify(vihjevastaus)
-        return vihjevastaus
+        return vihjeresponse
     else:
         vihje = haevihje(pelaaja, peli)
         print(f"rahat: {pelaaja.rahat}")
@@ -294,7 +294,7 @@ def vihje():
             "rahat": f"{pelaaja.rahat}"
         }
         vihjeresponse = jsonify(vihjevastaus)
-        return vihjevastaus
+        return vihjeresponse
 
 
 # Ylläoleva funktio hakee vihjeen, ja palauttaa sen ja päivittyneen rahatilanteen json-muodossa. Muu nettisivulla oleva
@@ -329,7 +329,7 @@ def veikkaa(veikkaus):
         return vastaus
 
     else:
-        if pelaaja.veikkausindeksi == 2:
+        if pelaaja.veikkausindeksi == 3:
             pelaaja.sijaintimaa = pelaaja.tavoitemaa
             pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             lentomatka = calculateDistance(pelaaja, peli)
@@ -354,19 +354,20 @@ def veikkaa(veikkaus):
             }
             return vastaus
 
-        elif pelaaja.veikkausindeksi != 2:
+        elif pelaaja.veikkausindeksi != 3:
             pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
             pelaaja.veikkausindeksi += 1
             print(f"veikkaus nro: {pelaaja.veikkausindeksi}")
             vastaus = {
                 "Vastaus": "Väärin",
+                "Veikkauksia": "Jäljellä",
                 "Vihjeitä": "Jäljellä",
                 "Rahat": pelaaja.rahat,
 
             }
             return vastaus
         
-        elif pelaaja.vihjeindeksi > 2:
+        elif pelaaja.vihjeindeksi > 3:
             vastaus = {
                 "Vihjeitä": "ei jäljellä",
                 "Rahat": pelaaja.rahat,
