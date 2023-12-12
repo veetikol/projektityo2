@@ -343,6 +343,7 @@ def veikkaa(veikkaus):
 
             vastaus = {
                 "Vastaus": "Väärin",
+                "Veikkauksia": "ei jäljellä",
                 "Rahat": pelaaja.rahat,
                 "sijainti": pelaaja.sijaintimaa,
                 "lentokenttä": pelaaja.sijaintiairport,

@@ -179,7 +179,7 @@ async function guessCountry(guess) {
                 // tähän väärä vastaus -animaatio
             } else if (data.Vihjeitä === "ei jäljellä") {
                 document.getElementById('noTipMessage').style.display = "block";
-            } else {
+            } else if (data.Veikkauksia === "ei jäljellä") {
                 // tähän väärä vastaus - animaatio ja siirtyminen seuraavaan maahan
                 targetCountry = data.tavoitemaa;
                 locationdatabox.innerHTML = capitalizeFirstLetter(data.sijainti);
