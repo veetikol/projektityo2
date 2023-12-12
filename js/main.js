@@ -67,9 +67,9 @@ const moneydatabox = document.getElementById('moneydatabox');
 const locationdatabox = document.getElementById('locationdatabox');
 const visitedCountries = document.getElementById('countries');
 const promptBox = document.getElementById('story');
-var audioCorrect = new Audio('sound/pilot.mp3')
-var audioWrong = new Audio('sound/wrong.mp3')
-var audioGameOver = new Audio('sound/GameOver.mp3')
+const audioCorrect = new Audio('sound/pilot.mp3')
+const audioWrong = new Audio('sound/wrong.mp3')
+const audioGameOver = new Audio('sound/GameOver.mp3')
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
