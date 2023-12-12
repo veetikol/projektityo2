@@ -67,6 +67,9 @@ const moneydatabox = document.getElementById('moneydatabox');
 const locationdatabox = document.getElementById('locationdatabox');
 const visitedCountries = document.getElementById('countries');
 const promptBox = document.getElementById('story');
+var audioCorrect = new Audio('sound/pilot.mp3')
+var audioWrong = new Audio('sound/wrong.mp3')
+var audioGameOver = new Audio('sound/GameOver.mp3')
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
 // ja luo tilalle pelaajavalinnat
@@ -89,11 +92,6 @@ document.querySelector('.goal').addEventListener('click', function (evt) {
   evt.currentTarget.classList.add('hide');
 });
 
-function GameOver() {
-    if ( moneydatabox.value === 0) {
-        document.querySelector('.goal2').classList.remove('hide2')
-    }
-}
 
 document.querySelector('.goal2').addEventListener('click', function (evt) {
   evt.currentTarget.classList.add('hide2');
@@ -161,6 +159,7 @@ async function guessCountry(guess) {
             if (data.Vastaus === "Oikein") {
                 // tämä tuo esiin well done -animaation, toistaisesi rikki
                 document.querySelector('.goal').classList.remove('hide')
+                audioCorrect.play();
                 distanceTraveled += data.lentokilometrit;
                 kilomdatabox.innerHTML = parseInt(distanceTraveled);
                 moneydatabox.innerHTML = data.Rahat;
@@ -176,6 +175,7 @@ async function guessCountry(guess) {
             } else if (data.Vastaus === "Väärin" && data.Vihjeitä === "Jäljellä") {
                 console.log("väärä veikkaus");
                 promptBox.innerHTML = "Wrong country!"
+                audioWrong.play();
                 // tähän väärä vastaus -animaatio
             } else if (data.Vihjeitä === "ei jäljellä") {
                 document.getElementById('noTipMessage').style.display = "block";
@@ -300,6 +300,7 @@ async function isGameOver() {
                 visitedCountries.innerHTML = "";
                 document.getElementById('startOverButton').style.display = "block";
                 clearTips();
+                audioGameOver.play();
             }
 
         })
