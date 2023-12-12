@@ -192,9 +192,9 @@ def calculateDistance(pelaaja, peli):
     search1 += f" WHERE name = '{pelaaja.sijaintiairport}' AND type = 'large_airport';"
     search2 = f"SELECT latitude_deg, longitude_deg FROM airport"
     search2 += f" WHERE name = '{peli.lentokentat[pelaaja.listaindeksi]}' AND type = 'large_airport';"
-    pelaaja.listaindeksi += 1
     print(f"{pelaaja.sijaintiairport}")
     print(f"{peli.lentokentat[pelaaja.listaindeksi]}")
+    pelaaja.listaindeksi += 1
     kursori = yhteys.cursor()
     kursori.execute(search1)
     tulos1 = kursori.fetchone()
@@ -242,7 +242,7 @@ def startti():
     for x in sqlhaku:
         peli.maat.append(x[0])
     for y in sqlhaku:
-        peli.lentokentat.append(y[1])
+        peli.lentokentat.append(y[1]) 
     pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
     print(f"tavoite: {pelaaja.tavoitemaa}")
     print(pelaaja.rahat) # testausta varten printattu oliosta jotain.
