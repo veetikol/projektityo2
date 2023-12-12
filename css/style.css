@@ -514,5 +514,7 @@ left: 20%;
 
 #startOverButton {
   display: none;
-  text-align: center;
+  justify-content: center;
+  margin-left: 515px;
+  margin-top: 50px;
 }

@@ -302,9 +302,10 @@ async function isGameOver() {
                 kilomdatabox.innerHTML = "";
                 locationdatabox.innerHTML = "";
                 visitedCountries.innerHTML = "";
-                document.getElementById('startOverButton').style.display = "block";
+                document.getElementById('startOverButton').style.display = "flex";
                 clearTips();
                 audioGameOver.play();
+                document.querySelector('.goal2').classList.remove('hide2');
             }
 
         })
