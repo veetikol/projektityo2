@@ -65,7 +65,7 @@ const console3Exit = document.getElementById('console3Exit');
 const kilomdatabox = document.getElementById('kilomdatabox');
 const moneydatabox = document.getElementById('moneydatabox');
 const locationdatabox = document.getElementById('locationdatabox');
-const visitedCountris = document.getElementById('countries');
+const visitedCountries = document.getElementById('countries');
 const promptBox = document.getElementById('story');
 
 // Tapahtumakäsittelijä konsolille, joka poistaa syöttökentän pelaajan syötettyä nimen,
@@ -158,7 +158,7 @@ async function guessCountry(guess) {
     })
         .then(response => response.json())
         .then(data => {
-            if (playerGuess === targetCountry) {
+            if (data.Vastaus === "Oikein") {
                 // tämä tuo esiin well done -animaation, toistaisesi rikki
                 document.querySelector('.goal').classList.remove('hide')
                 distanceTraveled += data.lentokilometrit;
@@ -173,7 +173,7 @@ async function guessCountry(guess) {
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
                 promptBox.innerHTML = "Correct answer! Flying to your destination..."
 
-            } else if (playerGuess !== targetCountry && data.Vihjeitä === "Jäljellä") {
+            } else if (data.Vastaus === "Väärin" && data.Vihjeitä === "Jäljellä") {
                 console.log("väärä veikkaus");
                 promptBox.innerHTML = "Wrong country!"
                 // tähän väärä vastaus -animaatio
@@ -281,7 +281,27 @@ console3Exit.addEventListener('click', () => {
     exitCountryList();
 })
 
-// icons
+// funktio pelin tilanteen tarkistamiselle
+async function isGameOver() {
+    fetch('http://127.0.0.1:5000/isGameOver', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if(data.game === "over") {
+                promptBox.innerHTML = 'Game over!';
+                moneydatabox.innerHTML = "";
+                nimilaatikko.innerHTML = "";
+                kilomdatabox.innerHTML = "";
+                visitedCountries.innerHTML = "";
+                clearTips();
+            }
+
+        })
+}
 
 // form for player name
 

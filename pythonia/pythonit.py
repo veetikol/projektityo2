@@ -346,7 +346,7 @@ def veikkaa(veikkaus):
                 "Veikkauksia": "ei jäljellä",
                 "Rahat": pelaaja.rahat,
                 "sijainti": pelaaja.sijaintimaa,
-                "lentokenttä": pelaaja.sijaintiairport,
+                    "lentokenttä": pelaaja.sijaintiairport,
                 "tavoitemaa": pelaaja.tavoitemaa,
                 "lentokilometrit": pelaaja.lentokm,
                 "koordinaatit": koordinaatit
@@ -372,6 +372,21 @@ def veikkaa(veikkaus):
                 "Rahat": pelaaja.rahat,
             }
             return vastaus
+        
+@app.route('/isGameOver')
+def isGameOver():
+    if pelaaja.rahat == 0:
+        vastaus = {
+                "game": "over"
+            }
+        response = jsonify(vastaus)
+        return response
+    else:
+        vastaus = {
+                "game": "notover"
+            }
+        response = jsonify(vastaus)
+        return response
 
 
 """"@app.route('/save')
