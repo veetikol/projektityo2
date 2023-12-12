@@ -181,7 +181,6 @@ def haevihje(pelaaja, peli):
             # tuloste = (countries[päämäärä][vihjeindeksi])
             tuloste = peli.vihjeet[pelaaja.tavoitemaa][pelaaja.vihjeindeksi]  # Tallettaa vihjeen tuloste-muuttujaan
             pelaaja.vihjeindeksi += 1  # Vihjeindeksi kasvaa, kun oikea vihje tallessa
-            pelaaja.veikkausindeksi += 1 # Veikkausindeksi kasvaa, kun painetaan submitGuess
             pelaaja.rahat -= 100  # Rahaa lähtee
     return tuloste  # Palauttaa vihjeen stringinä
 
@@ -191,9 +190,11 @@ def haevihje(pelaaja, peli):
 def calculateDistance(pelaaja, peli):
     search1 = f"SELECT latitude_deg, longitude_deg FROM airport"
     search1 += f" WHERE name = '{pelaaja.sijaintiairport}' AND type = 'large_airport';"
-    pelaaja.listaindeksi += 1
     search2 = f"SELECT latitude_deg, longitude_deg FROM airport"
     search2 += f" WHERE name = '{peli.lentokentat[pelaaja.listaindeksi]}' AND type = 'large_airport';"
+    pelaaja.listaindeksi += 1
+    print(f"{pelaaja.sijaintiairport}")
+    print(f"{peli.lentokentat[pelaaja.listaindeksi]}")
     kursori = yhteys.cursor()
     kursori.execute(search1)
     tulos1 = kursori.fetchone()
@@ -302,15 +303,16 @@ def vihje():
 
 @app.route('/veikkaa/<veikkaus>')
 def veikkaa(veikkaus):
+    print({pelaaja.veikkausindeksi})
     if pelaaja.tavoitemaa == veikkaus:
         pelaaja.rahat += 200
         pelaaja.vihjeindeksi = 0
         pelaaja.veikkausindeksi = 0
         kayty = pelaaja.tavoitemaa
-        pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
         pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
-        lentomatka = calculateDistance(pelaaja, peli)  # Pelaajan lentomatka lasketaan. Vihjeindeksi kasvaa funktion sisällä
-        koordinaatit = nykyinenSijainti(pelaaja)
+        koordinaatit = nykyinenSijainti(pelaaja) # Pelaajan lentomatka lasketaan. Vihjeindeksi kasvaa funktion sisällä
+        lentomatka = calculateDistance(pelaaja, peli)
+        pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
         pelaaja.lentokm += lentomatka  # pelaajan lentokilometreihin lisätään lentomatka
         pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
 
@@ -329,10 +331,10 @@ def veikkaa(veikkaus):
         return vastaus
 
     else:
-        if pelaaja.veikkausindeksi == 3:
+        if pelaaja.veikkausindeksi == 2:
             pelaaja.sijaintimaa = pelaaja.tavoitemaa
-            pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             lentomatka = calculateDistance(pelaaja, peli)
+            pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
             koordinaatit = nykyinenSijainti(pelaaja)
             pelaaja.lentokm += lentomatka
             pelaaja.rahat -= 200
@@ -354,7 +356,7 @@ def veikkaa(veikkaus):
             }
             return vastaus
 
-        elif pelaaja.veikkausindeksi != 3:
+        elif pelaaja.veikkausindeksi != 2:
             pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
             pelaaja.veikkausindeksi += 1
             print(f"veikkaus nro: {pelaaja.veikkausindeksi}")
@@ -367,7 +369,8 @@ def veikkaa(veikkaus):
             }
             return vastaus
         
-        elif pelaaja.vihjeindeksi > 3:
+        elif pelaaja.veikkausindeksi > 2:
+            pelaaja.veikkausindeksi = 0
             vastaus = {
                 "Vihjeitä": "ei jäljellä",
                 "Rahat": pelaaja.rahat,
