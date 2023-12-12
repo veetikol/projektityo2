@@ -510,3 +510,7 @@ left: 20%;
 #noTipMessage {
     display: none;
 }
+
+#startOverButton {
+  display: none;
+}

@@ -376,11 +376,21 @@ def veikkaa(veikkaus):
 @app.route('/isGameOver')
 def isGameOver():
     if pelaaja.rahat == 0:
+        pelaaja.nimi = ""
+        pelaaja.rahat = ""
+        pelaaja.sijaintimaa = "Finland"
+        pelaaja.sijaintiairport = "Helsinki Vantaa Airport"
+        pelaaja.lentokm = 0
+        pelaaja.tavoitemaa = ""
+        pelaaja.vihdeindeksi = 0
+        pelaaja.listaindeksi = 0
+        pelaaja.veikkausindeksi = 0
         vastaus = {
                 "game": "over"
             }
         response = jsonify(vastaus)
         return response
+
     else:
         vastaus = {
                 "game": "notover"

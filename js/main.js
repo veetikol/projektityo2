@@ -296,7 +296,9 @@ async function isGameOver() {
                 moneydatabox.innerHTML = "";
                 nimilaatikko.innerHTML = "";
                 kilomdatabox.innerHTML = "";
+                locationdatabox.innerHTML = "";
                 visitedCountries.innerHTML = "";
+                document.getElementById('startOverButton').style.display = "block";
                 clearTips();
             }
 
