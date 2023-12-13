@@ -296,7 +296,7 @@ async function isGameOver() {
         .then(response => response.json())
         .then(data => {
             if(data.game === "over") {
-                promptBox.innerHTML = 'Game over!';
+                promptBox.innerHTML = `Game over! You flew a total of ${parseInt(distanceTraveled)} kilometers, as a result of which your carbon footprint increased considerably. Consider alternative ways of traveling in the future. `;
                 moneydatabox.innerHTML = "";
                 document.getElementById('player-input').innerHTML = "";
                 kilomdatabox.innerHTML = "";
