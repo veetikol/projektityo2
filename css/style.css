@@ -229,7 +229,7 @@ nav {
     text-align: center;
 }
 
-.button-33 {
+.nappulat {
   background-color: rgb(207,159,205);
   border-radius: 100px;
   box-shadow: rgba(207, 159, 205, .2) 0 -25px 18px -14px inset,rgba(207, 159, 205, .15) 0 1px 2px,rgba(207, 159, 205, .15) 0 2px 4px,rgba(207, 159, 205, .15) 0 4px 8px,rgba(207, 159, 205, .15) 0 8px 16px,rgba(207, 159, 205, .15) 0 16px 32px;
@@ -250,7 +250,7 @@ nav {
     margin-top: 10px;
 }
 
-.button-33:hover {
+.nappulat:hover {
   box-shadow: rgba(207,159,205,.35) 0 -25px 18px -14px inset,rgba(207,159,205,.25) 0 1px 2px,rgba(207,159,205,.25) 0 2px 4px,rgba(207,159,205,.25) 0 4px 8px,rgba(207,159,205,.25) 0 8px 16px,rgba(207,159,205,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }

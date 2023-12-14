@@ -316,21 +316,3 @@ startOverButton.addEventListener('click', () => {
 })
 
 
-// form for player name
-
-// function to fetch data from API
-
-// function to update game status
-
-// function to show weather at selected airport
-
-// function to check if any goals have been reached
-
-// function to update goal data and goal table in UI
-
-// function to check if game is over
-
-// function to set up game
-// this is the main function that creates the game and calls the other functions
-
-// event listener to hide goal splash
