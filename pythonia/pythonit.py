@@ -24,6 +24,7 @@ class Game:
         self.maat = []
         self.lentokentat = []
         self.vihjeet = listasanakirja
+        self.kaydyt = []
 
 
 """Yllä olevat oliot ovat datan ylläpitämistä varten. Käytönnössä kaikki pelissä esiintyvät
@@ -250,8 +251,7 @@ def jatka(pelaaja, peli):
     pelinstatsit = kursori.fetchall()
     indeksi = 0 
 
-
-    while indeksi < 37:
+    while indeksi < 36:
         peli.maat.append(pelinstatsit[indeksi][1])
         peli.lentokentat.append(pelinstatsit[indeksi][2])
 
@@ -357,6 +357,7 @@ def vihje():
 def veikkaa(veikkaus):
     print({pelaaja.veikkausindeksi})
     if pelaaja.tavoitemaa == veikkaus:
+        peli.kaydyt.append(pelaaja.tavoitemaa)
         pelaaja.rahat += 200
         pelaaja.vihjeindeksi = 0
         pelaaja.veikkausindeksi = 0
@@ -368,7 +369,7 @@ def veikkaa(veikkaus):
         pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
         pelaaja.lentokm += lentomatka  # pelaajan lentokilometreihin lisätään lentomatka
         pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
-
+        
         vastaus = {
             "Vastaus": "Oikein",
             "Rahat": pelaaja.rahat,
@@ -385,6 +386,7 @@ def veikkaa(veikkaus):
 
     else:
         if pelaaja.veikkausindeksi == 2:
+            peli.kaydyt.append(pelaaja.tavoitemaa)
             pelaaja.sijaintimaa = pelaaja.tavoitemaa
             lentomatka = calculateDistance(pelaaja, peli)
             pelaaja.sijaintiairport = peli.lentokentat[pelaaja.listaindeksi]
@@ -476,20 +478,22 @@ def jatkuu():
     print("jatkamiskäsky saatu")
     jatka(pelaaja, peli)
     print(pelaaja.nimi)
-    print(peli.kaydyt[0])
-    print(peli.kaydyt[1])
-    palautettavatvihjeet = []
-    indeksi = 0
-    while pelaaja.vihjeindeksi > indeksi:
-        palautettavatvihjeet.append(peli.vihjeet[pelaaja.tavoitemaa][indeksi])
-        indeksi += 1
+    pelaaja.rahat += pelaaja.vihjeindeksi * 100
+    pelaaja.vihjeindeksi = 0
+    #print(peli.kaydyt[0])
+    #print(peli.kaydyt[1])
+    #palautettavatvihjeet = []
+    #indeksi = 0
+    #while pelaaja.vihjeindeksi > indeksi:
+    #    palautettavatvihjeet.append(peli.vihjeet[pelaaja.tavoitemaa][indeksi])
+    #    indeksi += 1
     jatkamisvahvistus = {
         "vahvistus": "OK",
         "nimi": f"{pelaaja.nimi}",
         "rahat": f"{pelaaja.rahat}",
         "lentokm": f"{pelaaja.lentokm}",
-        "sijaintimaa": f"{pelaaja.sijaintimaa}",
-        "vihjeet": f"{palautettavatvihjeet}"
+        "sijaintimaa": f"{pelaaja.sijaintimaa}"
+        #"vihjeet": f"{palautettavatvihjeet}"
     }
     jatkamisresponse = jsonify(jatkamisvahvistus)
     return jatkamisresponse

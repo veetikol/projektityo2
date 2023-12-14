@@ -70,6 +70,7 @@ const locationdatabox = document.getElementById('locationdatabox');
 const visitedCountries = document.getElementById('countries');
 const promptBox = document.getElementById('story');
 const startOverButton = document.getElementById('startOverButton');
+const continueButton = document.getElementById('Continuenappula');
 const audioCorrect = new Audio('sound/pilot.mp3')
 const audioWrong = new Audio('sound/wrong.mp3')
 const audioGameOver = new Audio('sound/GameOver.mp3')
@@ -328,4 +329,30 @@ savenappula.addEventListener('click', async function(evt) {
     .then(data => {
         alert("You have saved the game!")
     })
+})
+
+async function continueGame() {
+    fetch('http://127.0.0.1:5000/jatka', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        pelaajanimi = data.nimi;
+        nimiInput.innerHTML = pelaajanimi;
+        document.querySelector('.konsoli1').style.display = "none";
+        document.querySelector('.konsoli2').style.display = "block";
+        console.log(data.nimi)
+        console.log(data.rahat)
+        document.getElementById("moneydatabox").innerHTML = data.rahat;
+        document.getElementById("locationdatabox").innerHTML = data.sijaintimaa;
+    })
+}
+
+continueButton.addEventListener('click', () => {
+    event.preventDefault();
+    continueGame();
+    tipindex = 1;
 })
