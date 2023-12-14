@@ -210,7 +210,7 @@ guessButton.addEventListener('click', () => {
 
 guessSubmit.addEventListener('click', () => {
     event.preventDefault();
-    guessCountry(capitalizeFirstLetter(guessInput.value));
+    guessCountry(guessInput.value.toLowerCase());
 })
 
 // Tapahtumankäsittelijä Tip-nappulalle
