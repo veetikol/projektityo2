@@ -442,7 +442,7 @@ def isGameOver():
         pelaaja.sijaintiairport = "Helsinki Vantaa Airport"
         pelaaja.lentokm = 0
         pelaaja.tavoitemaa = ""
-        pelaaja.vihdeindeksi = 0
+        pelaaja.vihjeindeksi = 0
         pelaaja.listaindeksi = 0
         pelaaja.veikkausindeksi = 0
 
@@ -480,6 +480,7 @@ def jatkuu():
     print(pelaaja.nimi)
     pelaaja.rahat += pelaaja.vihjeindeksi * 100
     pelaaja.vihjeindeksi = 0
+    print(pelaaja.vihjeindeksi)
     #print(peli.kaydyt[0])
     #print(peli.kaydyt[1])
     #palautettavatvihjeet = []

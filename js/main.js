@@ -81,7 +81,7 @@ const audioGameOver = new Audio('sound/GameOver.mp3')
 startnappula.addEventListener("click", () => {
     event.preventDefault();
     // syötetään "virhekoodi", jos pelaaja syöttää tyhjän nimen
-    if (pelaajaformi.value == "") {
+    if (pelaajaformi.value === "") {
         emptyname.style.display = "block";
     } else {
         gameStart(pelaajaformi.value);
@@ -354,5 +354,5 @@ async function continueGame() {
 continueButton.addEventListener('click', () => {
     event.preventDefault();
     continueGame();
-    tipindex = 1;
+    clearTips();
 })
