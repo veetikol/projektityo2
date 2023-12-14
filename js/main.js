@@ -54,6 +54,7 @@ let targetCountry = "";
 let GuessedRight = false;
 const pelaajaformi = document.getElementById('pelaajainput');
 const startnappula = document.querySelector('#startnappula');
+const savenappula = document.getElementById('saveButton');
 const nimilaatikko = document.getElementById('nimi');
 const nimiInput = nimilaatikko.querySelector('p');
 const emptyname = document.getElementById('emptyname');
@@ -316,3 +317,15 @@ startOverButton.addEventListener('click', () => {
 })
 
 
+savenappula.addEventListener('click', async function(evt) {
+    fetch('http://127.0.0.1:5000/tallenna', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        } 
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("You have saved the game!")
+    })
+})
