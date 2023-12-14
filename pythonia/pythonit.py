@@ -381,7 +381,7 @@ def veikkaa(veikkaus):
         
 @app.route('/isGameOver')
 def isGameOver():
-    if pelaaja.rahat == 0:
+    if pelaaja.rahat < 100:
         pelaaja.nimi = ""
         pelaaja.rahat = ""
         pelaaja.sijaintimaa = "Finland"
