@@ -243,7 +243,7 @@ def startti():
         peli.maat.append(x[0])
     for y in sqlhaku:
         peli.lentokentat.append(y[1]) 
-    pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
+    pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi].capitalize()
     print(f"tavoite: {pelaaja.tavoitemaa}")
     print(pelaaja.rahat) # testausta varten printattu oliosta jotain.
     data = request.get_json() # varastoidaan frontista saatu json data-muuttujaan
@@ -315,12 +315,12 @@ def veikkaa(veikkaus):
         pelaaja.listaindeksi += 1
         pelaaja.sijaintimaa = pelaaja.tavoitemaa  # Pelaajan sijainti vaihtuu tavoitemaaksi
         pelaaja.lentokm += lentomatka  # pelaajan lentokilometreihin lisätään lentomatka
-        pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi]
+        pelaaja.tavoitemaa = peli.maat[pelaaja.listaindeksi].capitalize()
 
         vastaus = {
             "Vastaus": "Oikein",
             "Rahat": pelaaja.rahat,
-            "sijainti": pelaaja.sijaintimaa,
+            "sijainti": pelaaja.sijaintimaa.capitalize(),
             "lentokenttä": pelaaja.sijaintiairport,
             "tavoitemaa": pelaaja.tavoitemaa,
             "lentokilometrit": pelaaja.lentokm,

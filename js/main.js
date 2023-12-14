@@ -169,7 +169,7 @@ async function guessCountry(guess) {
                 clearTips();
                 targetCountry = data.tavoitemaa;
                 GuessedRight = true;
-                document.getElementById('countries').innerHTML += capitalizeFirstLetter(data.sijainti) + ', ';
+                document.getElementById('countries').innerHTML += data.sijainti + ', ';
                 let koordinaatit = data.koordinaatit;
                 changeMapView(koordinaatit[0], koordinaatit[1], data.sijainti);
                 promptBox.innerHTML = "Correct answer! Flying to your destination..."
@@ -210,7 +210,7 @@ guessButton.addEventListener('click', () => {
 
 guessSubmit.addEventListener('click', () => {
     event.preventDefault();
-    guessCountry(guessInput.value);
+    guessCountry(capitalizeFirstLetter(guessInput.value));
 })
 
 // Tapahtumankäsittelijä Tip-nappulalle
