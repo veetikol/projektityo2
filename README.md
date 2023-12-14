@@ -1,2 +1,6 @@
-# game-starter-HTML
-Green 'Code' button up there -> Download ZIP
+Ohjelmisto 2 - kurssin projektityö
+Engineers:
+Ville Kurikka
+Veeti Kolanen
+Jesse Nieminen
+Villiam Kuusisto
