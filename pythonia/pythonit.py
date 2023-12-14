@@ -209,6 +209,58 @@ def nykyinenSijainti(pelaaja):
     koordinaatit = kursori.fetchone()
     return koordinaatit
 
+def tallennus(pelaaja, peli):
+    kursori = yhteys.cursor()
+    sql1 = f"DELETE FROM player;" # Tyhjentää tietokannan
+    kursori.execute(sql1)
+    sql2 = f"DELETE FROM listat;"
+    kursori.execute(sql2)
+    kursori.execute("ALTER TABLE listat AUTO_INCREMENT = 1;") # resetoi listat-taulun indeksin
+    # Allaoleva syöttää pelaajan tiedot tietokantaan. Tulee siis 1 rivi.
+    sql3 = f"INSERT INTO player(name, money, country_name, airport_name, lentokm, vihjeindeksi, listaindeksi, veikkausindeksi)"
+    sql3 += f" VALUES('{pelaaja.nimi}', {pelaaja.rahat}, '{pelaaja.sijaintimaa}', '{pelaaja.sijaintiairport}', {pelaaja.lentokm}, {pelaaja.vihjeindeksi}, {pelaaja.listaindeksi}, {pelaaja.veikkausindeksi});"
+    kursori.execute(sql3)
+    indeksi = 0 # Indeksi listat-taulun täyttämistä varten
+    
+    while indeksi < len(peli.maat):
+    # Allaoleva rivi syöttää listat-tauluun ne maat ja lentokentät. Tulee siis 36 riviä tietoa
+        kursori.execute(f"INSERT INTO listat(maat, lentokentat, kaydyt) VALUES('{peli.maat[indeksi]}', '{peli.lentokentat[indeksi]}', 'ei');")
+        
+        if indeksi < len(peli.kaydyt): 
+            kursori.execute(f"UPDATE listat SET kaydyt = '{peli.kaydyt[indeksi]}' WHERE  id = {indeksi+1};")
+        indeksi += 1
+    yhteys.commit()
+    return
+
+def jatka(pelaaja, peli):
+    kursori = yhteys.cursor()
+    sql1 = "SELECT * from player;"
+    kursori.execute(sql1)
+    pelaajanstatsit = kursori.fetchall()
+    pelaaja.nimi = pelaajanstatsit[0][0]
+    pelaaja.rahat = pelaajanstatsit[0][1]
+    pelaaja.sijaintimaa = pelaajanstatsit[0][2]
+    pelaaja.sijaintiairport = pelaajanstatsit[0][3]
+    pelaaja.lentokm = pelaajanstatsit[0][4]
+    pelaaja.vihjeindeksi = pelaajanstatsit[0][5]
+    pelaaja.listaindeksi = pelaajanstatsit[0][6]
+    pelaaja.veikkausindeksi = pelaajanstatsit[0][7]
+    sql2 = "SELECT * from listat;"
+    kursori.execute(sql2)
+    pelinstatsit = kursori.fetchall()
+    indeksi = 0 
+
+
+    while indeksi < 37:
+        peli.maat.append(pelinstatsit[indeksi][1])
+        peli.lentokentat.append(pelinstatsit[indeksi][2])
+
+        if pelinstatsit[indeksi][3] != 'ei':
+            peli.kaydyt.append(pelinstatsit[indeksi][3])
+
+        indeksi += 1
+    return
+
 
 pelaaja = Player()
 peli = Game(countries)  # Luodaan taustapalvelun käynnistyessä peli- ja pelaaja-oliot
@@ -408,29 +460,46 @@ def isGameOver():
         return response
 
 
-""""@app.route('/save')
-def tallenna(pelaaja, peli):
-    # Eli tähän tulee sql-update-lause, joka tallentaa nykyisen pelitilanteen sql-tietokantaan.
-"""
+@app.route('/tallenna', methods=['GET'])
+def save():
+    print("tallennuskäsky saatu")
+    tallennus(pelaaja, peli)
+    tallennusvastaus = {
+        "vahvistus": "OK"
+    }
+    tallennusresponse = jsonify(tallennusvastaus)
+    return tallennusresponse
+
+
+@app.route('/jatka', methods=['GET'])
+def jatkuu():
+    print("jatkamiskäsky saatu")
+    jatka(pelaaja, peli)
+    print(pelaaja.nimi)
+    print(peli.kaydyt[0])
+    print(peli.kaydyt[1])
+    palautettavatvihjeet = []
+    indeksi = 0
+    while pelaaja.vihjeindeksi > indeksi:
+        palautettavatvihjeet.append(peli.vihjeet[pelaaja.tavoitemaa][indeksi])
+        indeksi += 1
+    jatkamisvahvistus = {
+        "vahvistus": "OK",
+        "nimi": f"{pelaaja.nimi}",
+        "rahat": f"{pelaaja.rahat}",
+        "lentokm": f"{pelaaja.lentokm}",
+        "sijaintimaa": f"{pelaaja.sijaintimaa}",
+        "vihjeet": f"{palautettavatvihjeet}"
+    }
+    jatkamisresponse = jsonify(jatkamisvahvistus)
+    return jatkamisresponse
 
 
 
 if __name__ == '__main__':
     app.run(use_reloader=True, host='localhost', port=5000)
 
-"""Eli peliä on muutettu niin, että pyritään pitämään olioissa (pelaaja ja peli) kaikki data. 
-Tällä hetkellä valmiina on start-flask, ostavihje-flask ja veikkaa-flask. Pelin pitäisi ainakin paperilla
-toimia näillä funktioilla. 
 
-Tällä hetkellä puuttuu vielä ainakin random event peliin, ja pelin tallennus. Periaatteessa se tallennus
-on suht yksinkertainen, mutta työläs. Databasea pitää muokata hieman sen toimimista varten
-(Pitää siis lisätä game-taulu, johon päivitetään peli-olion tiedot.)
-
-Lisäksi puuttuu kokonaan se lentokilometrien laskeminen. Vanhan funktion pitäisi toimia pienillä muokkauksilla.
-
-Bugeja todennäköisesti tulee löytymään, kun kokeillaan frontin ja backendin yhdistämistä, mutta life is life.
-
-"""
 
 
 
